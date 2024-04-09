@@ -37,7 +37,7 @@ context('Forms', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('emailtest11@gmail.com');
+        cy.get(':nth-child(3) > .border').type('emailtest223@gmail.com');
         cy.get(':nth-child(4) > .border').type('+54923332323');
         cy.get(':nth-child(5) > .border').type(123456);
         cy.get(':nth-child(6) > .border').type(123456);
@@ -68,7 +68,7 @@ context('Forms', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('correotest11@gmail.com');
+        cy.get(':nth-child(3) > .border').type('correotest334@gmail.com');
         cy.get(':nth-child(4) > .border').type('+5491212121');
         cy.get(':nth-child(5) > .border').type('123456');
         cy.get(':nth-child(6) > .border').type('123456');
