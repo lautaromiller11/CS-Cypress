@@ -1,5 +1,12 @@
 /// <reference types="cypress" />
 
+function generarCorreoElectronico() {
+    const cadenaAleatoria = Math.random().toString(36).substring(7);
+    const correoElectronico = `usuario_${cadenaAleatoria}@ejemplo.com`;
+    return correoElectronico;
+}
+
+
 context('Home', () => {
     beforeEach(() => {
         cy.visit('https://www.dev.comparasoftware.com/')
@@ -25,6 +32,7 @@ context('Home', () => {
     })
 
     it('Test #02 Boton Registrar mi Producto - Soy fabricante de software', () => {
+        const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
         cy.get('#register-box > [href="/panel-usuario/register"]').click();
         cy.wait(2000);
@@ -37,7 +45,7 @@ context('Home', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('emailtest9993@gmail.com');
+        cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+54923332323');
         cy.get(':nth-child(5) > .border').type(123456);
         cy.get(':nth-child(6) > .border').type(123456);
@@ -56,6 +64,7 @@ context('Home', () => {
     })
 
     it('Test #03 Boton Registrar mi Producto - Soy Partner de Software', () =>{
+        const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
         cy.get('[href="/panel-usuario/partner-register"] > span').click();
         cy.wait(2000);
@@ -68,7 +77,7 @@ context('Home', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('correotest900@gmail.com');
+        cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+5491212121');
         cy.get(':nth-child(5) > .border').type('123456');
         cy.get(':nth-child(6) > .border').type('123456');
@@ -369,6 +378,7 @@ context('Home', () => {
 
     // Cards Registro, Seccion publicar un Software
     it('Fabricante Soft', () =>{
+        const correoElectronico = generarCorreoElectronico();
         cy.get('.justify-between > .btn').click();
         cy.wait(2000);
         const stub = cy.stub()
@@ -380,7 +390,7 @@ context('Home', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('emailtest9911@gmail.com');
+        cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+54923332323');
         cy.get(':nth-child(5) > .border').type(123456);
         cy.get(':nth-child(6) > .border').type(123456);
@@ -399,6 +409,7 @@ context('Home', () => {
     })
 
     it('Partner', () =>{
+        const correoElectronico = generarCorreoElectronico();
         cy.get('.xl\\:w-\\[385px\\].justify-start > .btn.btn-primary.font-medium').click();
         cy.wait(2000);
         const stub = cy.stub()
@@ -410,7 +421,7 @@ context('Home', () => {
         })
         cy.get(':nth-child(1) > .border').type('Nombre');
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
-        cy.get(':nth-child(3) > .border').type('correotest99922@gmail.com');
+        cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+5491212121');
         cy.get(':nth-child(5) > .border').type('123456');
         cy.get(':nth-child(6) > .border').type('123456');
