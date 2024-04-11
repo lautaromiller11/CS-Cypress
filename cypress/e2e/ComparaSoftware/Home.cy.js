@@ -13,6 +13,7 @@ context('Home', () => {
         cy.viewport(1480, 820);
         cy.wait(4000);
         cy.contains('Seguir en México').click();
+        cy.wait(2000);
     })
      ///////Navbar
     it('Test #01 Boton "soliciar asesoria sin costo" en el navbar', () => {
@@ -460,7 +461,7 @@ context('Home', () => {
             cy.contains(categoria).should('exist');
             cy.visit('https://www.dev.comparasoftware.com/');
         });
-        cy.get(':nth-child(10) > .home-container > .justify-center > .btn').click();
+        cy.contains(':nth-child(11) > .home-container > .justify-center > .btn', 'Ver todas las categorías').click();
         cy.contains('¿Qué tipo de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/');
     })
