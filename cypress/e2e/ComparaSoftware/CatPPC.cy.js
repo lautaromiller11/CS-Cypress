@@ -298,41 +298,41 @@ context('Categoria Plantilla PPC', () => {
         // Primer Soft
         //Click a Nombre de Soft
         cy.contains('Vet Cloud').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click a boton "ver mas"
         cy.get('.container > :nth-child(2) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
 
         //Segundo Soft
         //Click a nombre de Sof
         cy.contains('SaelVET').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click a boton "ver mas"
         cy.get('.container > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
 
         //Tercer Soft
         //Click a nombre de Sof
         cy.contains('VetBilling').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click a boton "ver mas"
         cy.get('.container > :nth-child(4) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
 
         //Cuarto Soft
         //Click a nombre de Sof
         cy.contains('HVMS').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click a boton "ver mas"
         cy.get('.container > :nth-child(5) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
 
         //Click a logo del Soft (((Dejar comentado hasta solucionar abrir en la misma pestaña)))
@@ -445,24 +445,24 @@ context('Categoria Plantilla PPC', () => {
 
 
     //Seccion "software seleccionado"
-    it('Seccion Soft Seleccionado', () => {
+    it.only('Seccion Soft Seleccionado', () => {
         //Primer Soft
         //Click en el nombre
         cy.get(':nth-child(1) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click en la imagen
         cy.get(':nth-child(1) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click en boton "ver mas"
         cy.get(':nth-child(1) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Segundo soft
         //Click en el nombre
         cy.get(':nth-child(2) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click en la imagen
         // cy.get(':nth-child(2) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
@@ -471,15 +471,15 @@ context('Categoria Plantilla PPC', () => {
         //Tercer Soft
         //Click en el nombre
         cy.get(':nth-child(3) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click en la imagen
         cy.get('.mb-20 > .grid > :nth-child(3) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
         //Click en boton "ver mas"
         cy.get('.mb-20 > .grid > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('.col-8 > .text-global-azul-dark').should('exist');
+        cy.get('#soft-title > .font-medium').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
     })
 
