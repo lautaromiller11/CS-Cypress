@@ -40,6 +40,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Boton Registrar mi Producto - Soy fabricante de software', () => {
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
         cy.get('#register-box > [href="/panel-usuario/register"]').click();
@@ -310,6 +311,13 @@ context('Categoria Plantilla Arya', () => {
         cy.get('.modal-body > .text-blue > :nth-child(2) > #end-btn').click();
     })
 
+    //Calculadora
+    // it.only('Calculadora' ,() =>{
+    //     cy.contains('label', 'Entre 20 a 100').click();
+    //     cy.get('#next-btn').click();
+    //     cy.get('#selector').invoke('attr', 'style', 'left: 50%').trigger('input');
+    // })
+
     it('Card de Soft en el listado', () =>{
         cy.contains('h3', 'Funcionalidades de Bind').click();
         cy.contains('.btn-primary', 'Ver precio').click();
@@ -325,6 +333,7 @@ context('Categoria Plantilla Arya', () => {
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa prueba');
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('test@gmail.com');
         cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
+        cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
     })
 
     it('Tabla comparativa', () =>{
