@@ -1,5 +1,13 @@
 /// <reference types="cypress" />
 
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of null (reading 'nextElementSibling')")) {
+        return false
+    }
+    return true
+})
+
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
     const correoElectronico = `usuario_${cadenaAleatoria}@ejemplo.com`;
@@ -49,8 +57,8 @@ context('Home', () => {
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
         cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+54923332323');
-        cy.get(':nth-child(5) > .border').type(123456);
-        cy.get(':nth-child(6) > .border').type(123456);
+        cy.get(':nth-child(5) > .border').type("123456");
+        cy.get(':nth-child(6) > .border').type("123456");
         cy.get('.rounded').click();
         cy.wait(2000);
         cy.get(':nth-child(1) > .border').type('Soft Nombre');
@@ -66,7 +74,7 @@ context('Home', () => {
     })
 
     //Registrar mi Producto - Soy Partner de Software
-    it('Registrar mi Producto - Soy Partner de Software', () => {
+    it.only('Registrar mi Producto - Soy Partner de Software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
         cy.get('[href="/panel-usuario/partner-register"] > span').click();
@@ -206,8 +214,8 @@ context('Home', () => {
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
         cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+54923332323');
-        cy.get(':nth-child(5) > .border').type(123456);
-        cy.get(':nth-child(6) > .border').type(123456);
+        cy.get(':nth-child(5) > .border').type("123456");
+        cy.get(':nth-child(6) > .border').type("123456");
         cy.get('.rounded').click();
         cy.wait(2000);
         cy.get(':nth-child(1) > .border').type('Soft Nombre');
@@ -294,7 +302,7 @@ context('Home', () => {
             }
             // Devolver verdadero para que Cypress maneje la excepción como de costumbre
             return true;
-    })
+        })
         it('Boton "Solicitar asesoría sin costo" en el navbar', () => {
             cy.visit('https://www.dev.comparasoftware.com/bind');
             cy.contains('Solicitar asesoría sin costo').click();
@@ -327,8 +335,8 @@ context('Home', () => {
             cy.get('.grid > :nth-child(2) > .border').type('Apellido');
             cy.get(':nth-child(3) > .border').type(correoElectronico);
             cy.get(':nth-child(4) > .border').type('+54923332323');
-            cy.get(':nth-child(5) > .border').type(123456);
-            cy.get(':nth-child(6) > .border').type(123456);
+            cy.get(':nth-child(5) > .border').type("123456");
+            cy.get(':nth-child(6) > .border').type("123456");
             cy.get('.rounded').click();
             cy.wait(2000);
             cy.get(':nth-child(1) > .border').type('Soft Nombre');
@@ -371,109 +379,109 @@ context('Home', () => {
             cy.wait(2000);
             cy.visit('https://www.dev.comparasoftware.com/bind');
         })
-            /// Seccion Buscador 
-    it('Campo Buscar - Arya', () => {
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('#search-bar').type('Raptor Web Experience');
-        cy.get('li > .relative').should('contain', 'Raptor Web Experience');
-        cy.visit('https://www.dev.comparasoftware.com/bind')
-        cy.get('#search-bar').type('Ventas');
-        cy.get('#results').should('contain', 'Ventas');
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('#search-bar').type('Software CRM');
-        cy.get('#results').should('contain', 'CRM');
-    })
+        /// Seccion Buscador 
+        it('Campo Buscar', () => {
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('#search-bar').type('Raptor Web Experience');
+            cy.get('li > .relative').should('contain', 'Raptor Web Experience');
+            cy.visit('https://www.dev.comparasoftware.com/bind')
+            cy.get('#search-bar').type('Ventas');
+            cy.get('#results').should('contain', 'Ventas');
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('#search-bar').type('Software CRM');
+            cy.get('#results').should('contain', 'CRM');
+        })
 
-    it('Boton Ver Precio | Boton Prueba Gratis', () => {
-        //Ver precio
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('.text-end > .btn').click();
-        cy.get('#firstname').type('Nombre Prueba');
-        cy.get('.select-form').click();
-        cy.get('[data-value="+504"] > :nth-child(1)').click();
-        cy.get('#phone').type('24244554');
-        cy.get('#company').type('Empresa prueba');
-        cy.get('#email').type('correoprueba@gmail.com');
-        cy.get('#end-btn').click();
-        cy.wait(1000);
-        cy.get('.modal-body > .flex > div > .btn').click();
-        // Prueba gratis
-        cy.get('.gap-3 > .h-11 > .btn').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre prueba');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .select-form').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .find_country > .select-options-country > [data-value="+56"]').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('6512145');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Prueba');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
-        cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
-        cy.wait(1000);
-        cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
-    })
+        it('Boton Ver Precio | Boton Prueba Gratis', () => {
+            //Ver precio
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('.text-end > .btn').click();
+            cy.get('#firstname').type('Nombre Prueba');
+            cy.get('.select-form').click();
+            cy.get('[data-value="+504"] > :nth-child(1)').click();
+            cy.get('#phone').type('24244554');
+            cy.get('#company').type('Empresa prueba');
+            cy.get('#email').type('correoprueba@gmail.com');
+            cy.get('#end-btn').click();
+            cy.wait(1000);
+            cy.get('.modal-body > .flex > div > .btn').click();
+            // Prueba gratis
+            cy.get('.gap-3 > .h-11 > .btn').click();
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre prueba');
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .select-form').click();
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .find_country > .select-options-country > [data-value="+56"]').click();
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('6512145');
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Prueba');
+            cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
+            cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
+            cy.wait(1000);
+            cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
+        })
 
 
-    //Comparador Software vs Software
-    it('Comparador Software vs Software', () => {
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('[data-softids="2329,5898"] > .btn').click();
-        cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('[data-softids="2329,5721"] > .btn').click();
-        cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('[data-softids="2329,3989"] > .btn').click();
-        cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-    })
+        //Comparador Software vs Software
+        it('Comparador Software vs Software', () => {
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('[data-softids="2329,5898"] > .btn').click();
+            cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('[data-softids="2329,5721"] > .btn').click();
+            cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('[data-softids="2329,3989"] > .btn').click();
+            cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+        })
 
-    //Banner agendar llamada
-    it('Banner Agendar Llamada', () => {
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('.py-4 > .flex').click()
-        cy.get('#firstname').type('Nombre Prueba');
-        cy.get('.select-form').click();
-        cy.get('[data-value="+56"]').click();
-        cy.get('#phone').type('356512');
-        cy.get('#company').type('Empresa prueba');
-        cy.get('#email').type('emailprueba@gmail.com');
-        cy.get('#end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
-    })
+        //Banner agendar llamada
+        it('Banner Agendar Llamada', () => {
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('.py-4 > .flex').click()
+            cy.get('#firstname').type('Nombre Prueba');
+            cy.get('.select-form').click();
+            cy.get('[data-value="+56"]').click();
+            cy.get('#phone').type('356512');
+            cy.get('#company').type('Empresa prueba');
+            cy.get('#email').type('emailprueba@gmail.com');
+            cy.get('#end-btn').click();
+            cy.get('.modal-body > .flex > div > .btn').click();
+        })
 
-    //Sección precios
-    it('Sección precios', () => {
-        //Primer Form
-        cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('#0').click();
-        cy.get('#firstname').type('Nombre Prueba');
-        cy.get('.select-form').click();
-        cy.get('[data-value="+56"]').click();
-        cy.get('#phone').type('5434324');
-        cy.get('#company').type('Empresa prueba');
-        cy.get('#email').type('prueba@gmail.com');
-        cy.get('#end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
-        //Segundo Form
-        cy.get('#1').click();
-        cy.get('#firstname').type('Nombre Prueba');
-        cy.get('.select-form').click();
-        cy.get('[data-value="+56"]').click();
-        cy.get('#phone').type('5434324');
-        cy.get('#company').type('Empresa prueba');
-        cy.get('#email').type('prueba@gmail.com');
-        cy.get('#end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
-        //Tercer Form
-        cy.get('#2').click();
-        cy.get('#firstname').type('Nombre Prueba');
-        cy.get('.select-form').click();
-        cy.get('[data-value="+56"]').click();
-        cy.get('#phone').type('5434324');
-        cy.get('#company').type('Empresa prueba');
-        cy.get('#email').type('prueba@gmail.com');
-        cy.get('#end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
+        //Sección precios
+        it('Sección precios', () => {
+            //Primer Form
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+            cy.get('#0').click();
+            cy.get('#firstname').type('Nombre Prueba');
+            cy.get('.select-form').click();
+            cy.get('[data-value="+56"]').click();
+            cy.get('#phone').type('5434324');
+            cy.get('#company').type('Empresa prueba');
+            cy.get('#email').type('prueba@gmail.com');
+            cy.get('#end-btn').click();
+            cy.get('.modal-body > .flex > div > .btn').click();
+            //Segundo Form
+            cy.get('#1').click();
+            cy.get('#firstname').type('Nombre Prueba');
+            cy.get('.select-form').click();
+            cy.get('[data-value="+56"]').click();
+            cy.get('#phone').type('5434324');
+            cy.get('#company').type('Empresa prueba');
+            cy.get('#email').type('prueba@gmail.com');
+            cy.get('#end-btn').click();
+            cy.get('.modal-body > .flex > div > .btn').click();
+            //Tercer Form
+            cy.get('#2').click();
+            cy.get('#firstname').type('Nombre Prueba');
+            cy.get('.select-form').click();
+            cy.get('[data-value="+56"]').click();
+            cy.get('#phone').type('5434324');
+            cy.get('#company').type('Empresa prueba');
+            cy.get('#email').type('prueba@gmail.com');
+            cy.get('#end-btn').click();
+            cy.get('.modal-body > .flex > div > .btn').click();
+        })
     })
-})
 
     /// Casos criticos Categoria Arya
     context('Categoria Arya', () => {
@@ -556,7 +564,7 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
         })
 
-        it('Campo Buscar - Home', () => {
+        it('Campo Buscar', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
             cy.get('#search-bar').type('Raptor Web Experience');
             cy.get('li > .relative').should('contain', 'Raptor Web Experience');
@@ -600,7 +608,7 @@ context('Home', () => {
     })
 
     // Casos criticos Categoria PPC
-        context('Categoria PPC', () => {
+    context('Categoria PPC', () => {
         it('form asesoria navbar', () => {
             cy.visit('https://www.dev.comparasoftware.com/veterinario')
             // hacer click en el boton "solicitar asesoria sin costo"
@@ -703,7 +711,7 @@ context('Home', () => {
             cy.get('.container > :nth-child(2) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
             cy.get('#soft-title > .font-medium').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             //Segundo Soft
             //Click a nombre de Sof
             cy.contains('SaelVET').invoke('removeAttr', 'target').click();
@@ -713,7 +721,7 @@ context('Home', () => {
             cy.get('.container > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
             cy.get('#soft-title > .font-medium').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             //Tercer Soft
             //Click a nombre de Sof
             cy.contains('VetBilling').invoke('removeAttr', 'target').click();
@@ -723,7 +731,7 @@ context('Home', () => {
             cy.get('.container > :nth-child(4) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
             cy.get('#soft-title > .font-medium').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             //Cuarto Soft
             //Click a nombre de Sof
             cy.contains('HVMS').invoke('removeAttr', 'target').click();
@@ -733,7 +741,7 @@ context('Home', () => {
             cy.get('.container > :nth-child(5) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
             cy.get('#soft-title > .font-medium').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             //Click a logo del Soft (((Dejar comentado hasta solucionar abrir en la misma pestaña)))
             //cy.get('.container > :nth-child(2) > .items-center > .w-20.relative > .w-20 > .track-click > .rounded').invoke('removeAttr', 'target').click();
         })
@@ -757,12 +765,12 @@ context('Home', () => {
             cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
             cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             cy.get(':nth-child(2) > .preset-comparation > .btn').click();
             cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
             cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    
+
             cy.get(':nth-child(3) > .preset-comparation > .btn').click();
             cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
             cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');

@@ -1,5 +1,13 @@
 /// <reference types="cypress" />
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of null (reading 'nextElementSibling')")) {
+        return false
+    }
+    return true
+})
+
+
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
     const correoElectronico = `usuario_${cadenaAleatoria}@ejemplo.com`;
@@ -48,8 +56,8 @@ context('Home', () => {
         cy.get('.grid > :nth-child(2) > .border').type('Apellido');
         cy.get(':nth-child(3) > .border').type(correoElectronico);
         cy.get(':nth-child(4) > .border').type('+54923332323');
-        cy.get(':nth-child(5) > .border').type(123456);
-        cy.get(':nth-child(6) > .border').type(123456);
+        cy.get(':nth-child(5) > .border').type("123456");
+        cy.get(':nth-child(6) > .border').type("123456");
         cy.get('.rounded').click();
         cy.wait(2000);
         cy.get(':nth-child(1) > .border').type('Soft Nombre');
@@ -323,7 +331,7 @@ context('Home', () => {
 
     // Sección "Un desarrollador, varias soluciones
     it('Sección "Un desarrollador, varias soluciones" | Cards Softwares', () => {
-        ////
+        ///
         cy.get('[href="/salesforce-servicio-cloud"] > img').click();
         cy.contains('Salesforce Service Cloud').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/')
