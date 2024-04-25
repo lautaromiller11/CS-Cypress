@@ -84,7 +84,7 @@ context('Categoria Plantilla PPC', () => {
     it('Boton Registrar mi Producto - Soy Partner de Software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
-        cy.get('[href="/panel-usuario/partner-register"] > span').click();
+        cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {

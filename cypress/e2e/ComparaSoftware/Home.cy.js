@@ -75,7 +75,7 @@ context('Home', () => {
     it('Test #03 Boton Registrar mi Producto - Soy Partner de Software', () =>{
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
-        cy.get('[href="/panel-usuario/partner-register"] > span').click();
+        cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -388,7 +388,7 @@ context('Home', () => {
     // Cards Registro, Seccion publicar un Software
     it('Fabricante Soft', () =>{
         const correoElectronico = generarCorreoElectronico();
-        cy.get('.justify-between > .btn').click();
+        cy.get('.justify-between > .btn > img').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
