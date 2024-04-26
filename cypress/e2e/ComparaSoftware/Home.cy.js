@@ -469,7 +469,7 @@ context('Home', () => {
             cy.contains(categoria).should('exist');
             cy.visit('https://www.dev.comparasoftware.com/');
         });
-        cy.contains(':nth-child(11) > .home-container > .justify-center > .btn', 'Ver todas las categorías').click();
+        cy.get('a[href="/categorias"]').contains('Ver todas las categorías').click();
         cy.contains('¿Qué tipo de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/');
     })

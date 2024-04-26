@@ -1,13 +1,11 @@
 /// <reference types="cypress" />
 
-
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes("Cannot read properties of null (reading 'nextElementSibling')")) {
         return false
     }
     return true
 })
-
 
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
@@ -16,9 +14,9 @@ function generarCorreoElectronico() {
 }
 
 
-context('Categoria Plantilla PPC', () => {
+context('Categoria Plantilla Arya 2', () => {
     beforeEach(() => {
-        cy.visit('https://www.dev.comparasoftware.com/veterinario')
+        cy.visit('https://www.dev.comparasoftware.com/software-crm')
         cy.viewport(1480, 820);
         cy.wait(4000);
         cy.contains('Seguir en México').click();
@@ -29,6 +27,9 @@ context('Categoria Plantilla PPC', () => {
             return true;
         })
     })
+
+    //Navbar 
+
     it('form asesoria navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
@@ -43,7 +44,6 @@ context('Categoria Plantilla PPC', () => {
         cy.get('[data-value="Inteligencia de Negocio"]').click();
         cy.get('.modal-content > .row > .w-full > #end-btn').click();
     })
-
 
     it('Boton Registrar mi Producto - Soy fabricante de software', () => {
         const correoElectronico = generarCorreoElectronico();
@@ -74,9 +74,8 @@ context('Categoria Plantilla PPC', () => {
         cy.get('.mb-6.text-sm > :nth-child(4) > .border').type('Test ¿qué es y para qué sirve?');
         cy.get('button.bg-blue-compara-bg-color').click();
         cy.wait(2000);
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
-
 
     it('Boton Registrar mi Producto - Soy Partner de Software', () => {
         const correoElectronico = generarCorreoElectronico();
@@ -103,16 +102,16 @@ context('Categoria Plantilla PPC', () => {
         cy.get('select').select('Español');
         cy.get('button.bg-blue-compara-bg-color').click();
         cy.wait(2000);
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Campo Buscar', () => {
         cy.get('#search-bar').type('Raptor Web Experience');
         cy.get('li > .relative').should('contain', 'Raptor Web Experience');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario')
+        cy.visit('https://www.dev.comparasoftware.com/software-crm')
         cy.get('#search-bar').type('Ventas');
         cy.get('#results').should('contain', 'Ventas');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario')
+        cy.visit('https://www.dev.comparasoftware.com/software-crmo')
         cy.get('#search-bar').type('Software CRM');
         cy.get('#results').should('contain', 'CRM');
     })
@@ -121,29 +120,28 @@ context('Categoria Plantilla PPC', () => {
         cy.get('#btn-cat-menu > img').click();
         cy.get('.selected > .active').click();
         cy.contains('Software de Automatización de Marketing en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
         cy.get('.selected > :nth-child(2)').click();
         cy.contains('Software de Email Marketing en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
         cy.get('.selected > :nth-child(3)').click();
         cy.contains('Software para Marketing en Redes Sociales en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         //cy.get('#cat-top10-list').should('have.length', 10);
     })
-
     it('Categorias - Hub Ventas', () => {
         cy.get('#btn-cat-menu > img').click();
         cy.get('[data-pos="1"]').click();
         cy.get('.sub-cat-1 > .active > .w-full').click();
         cy.contains('Software CRM en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
         cy.get('[data-pos="1"]').click();
         cy.get('.sub-cat-1 > :nth-child(2)').click();
         cy.contains('Software de Ventas en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias - Hub Mantenimiento', () => {
@@ -151,198 +149,153 @@ context('Categoria Plantilla PPC', () => {
         cy.get('[data-pos="2"]').click();
         cy.get('.sub-cat-2 > .active').click();
         cy.contains('Software de Mantenimiento en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
         cy.get('[data-pos="2"]').click();
         cy.get('.sub-cat-2 > :nth-child(2)').click();
         cy.contains('Software de Mantenimiento de Equipos Médico en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
         cy.get('[data-pos="2"]').click();
         cy.get('.sub-cat-2 > :nth-child(3)').click();
         cy.contains('Software de Mantenimiento Predictivo en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias - Hub ERP', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="3"]').click();
+        cy.get('.header-list > [data-pos="3"]').click();
         cy.get('.sub-cat-3 > .active').click();
         cy.contains('Software ERP en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="3"]').click();
+        cy.get('.header-list > [data-pos="3"]').click();
         cy.get('.sub-cat-3 > :nth-child(2)').click();
         cy.contains('Software de Producción y Fabricación en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="3"]').click();
+        cy.get('.header-list > [data-pos="3"]').click();
         cy.get('.sub-cat-3 > :nth-child(3)').click();
         cy.contains('Software de Gestión de Calidad en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="3"]').click();
+        cy.get('.header-list > [data-pos="3"]').click();
         cy.get('.sub-cat-3 > :nth-child(4)').click();
         cy.contains('Software para Inventarios en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias - Hub Analitica', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"]').click();
+        cy.get('[data-pos="4"] > span').click();
         cy.get('.sub-cat-4 > .active').click();
         cy.contains('Software Estadístico en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"]').click();
+        cy.get('[data-pos="4"] > span').click();
         cy.get('.sub-cat-4 > :nth-child(2)').click();
         cy.contains('Software de Base de Datos en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"]').click();
+        cy.get('[data-pos="4"] > span').click();
         cy.get('.sub-cat-4 > :nth-child(3)').click();
         cy.contains('Software de Inteligencia de Negocio en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorías Hub - Recursos Humanos', () => {
         // cy.get('#btn-cat-menu > img').click();
-        // cy.get('[data-pos="5"]').click();
+        // cy.get('.header-list > [data-pos="5"]').click();
         // cy.get('.sub-cat-5 > .active').click();
         // cy.contains('Software de Gestión de Desempeño Empresarial en México').should('exist');
-        // cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        // cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="5"]').click();
+        cy.get('.header-list > [data-pos="5"]').click();
         cy.get('.sub-cat-5 > :nth-child(2)').click();
         cy.contains('Software de Recursos Humanos en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="5"]').click();
+        cy.get('.header-list > [data-pos="5"]').click();
         cy.get('.sub-cat-5 > :nth-child(3)').click();
         cy.contains('Software de Pago de Nómina en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias Hub - Contabilidad y Finanzas', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="6"]').click();
+        cy.get('.header-list > [data-pos="6"]').click();
         cy.get('.sub-cat-6 > .active').click();
         cy.contains('Software de facturación en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="6"]').click();
+        cy.get('.header-list > [data-pos="6"]').click()
         cy.get('.sub-cat-6 > :nth-child(2)').click();
         cy.contains('Software de Firma Electrónica en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="6"]').click();
+        cy.get('.header-list > [data-pos="6"]').click();
         cy.get('.sub-cat-6 > :nth-child(3)').click();
         cy.contains('Software de Cobranza en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias Hub - Educativo', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="7"]').click();
+        cy.get('.header-list > [data-pos="7"]').click();
         cy.get('.sub-cat-7 > .active').click();
         cy.contains('Plataformas E-learning en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="7"]').click();
+        cy.get('.header-list > [data-pos="7"]').click();
         cy.get('.sub-cat-7 > :nth-child(2)').click();
         cy.contains('Software Educativo en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="7"]').click();
+        cy.get('.header-list > [data-pos="7"]').click();
         cy.get('.sub-cat-7 > :nth-child(3)').click();
         cy.contains('Software LMS en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias Hub - Servicio al Cliente', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="8"]').click();
+        cy.get('.header-list > [data-pos="8"]').click();
         cy.get('.sub-cat-8 > .active').click();
         cy.contains('Software de Atención al Cliente en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="8"]').click();
+        cy.get('.header-list > [data-pos="8"]').click();
         cy.get('.sub-cat-8 > :nth-child(2)').click();
         cy.contains('Software de Chatbot en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="8"]').click();
+        cy.get('.header-list > [data-pos="8"]').click();
         cy.get('.sub-cat-8 > :nth-child(3)').click();
         cy.contains('Software de Mesa de Ayuda en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
     })
     it('Categorias Hub - Gestión', () => {
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="9"]').click();
+        cy.get('.header-list > [data-pos="9"]').click();
         cy.get('.sub-cat-9 > .active').click();
         cy.contains('Software para Restaurante en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="9"]').click();
+        cy.get('.header-list > [data-pos="9"]').click();
         cy.get('.sub-cat-9 > :nth-child(2)').click();
         cy.contains('Software de Construcción en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="9"]').click();
+        cy.get('.header-list > [data-pos="9"]').click();
         cy.get('.sub-cat-9 > :nth-child(3)').click();
         cy.contains('Software Médico para Clínicas en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="9"]').click();
+        cy.get('.header-list > [data-pos="9"]').click();
         cy.get('.sub-cat-9 > :nth-child(4)').click();
         cy.contains('Software para Veterinarias en México').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    })
-
-    it('Seccion Top 4 Software', () => {
-        // Primer Soft
-        //Click a Nombre de Soft
-        cy.contains('Vet Cloud').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click a boton "ver mas"
-        cy.get('.container > :nth-child(2) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        //Segundo Soft
-        //Click a nombre de Sof
-        cy.contains('SaelVET').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click a boton "ver mas"
-        cy.get('.container > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        //Tercer Soft
-        //Click a nombre de Sof
-        cy.contains('VetBilling').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click a boton "ver mas"
-        cy.get('.container > :nth-child(4) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        //Cuarto Soft
-        //Click a nombre de Sof
-        cy.contains('HVMS').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click a boton "ver mas"
-        cy.get('.container > :nth-child(5) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        //Click a logo del Soft (((Dejar comentado hasta solucionar abrir en la misma pestaña)))
-        //cy.get('.container > :nth-child(2) > .items-center > .w-20.relative > .w-20 > .track-click > .rounded').invoke('removeAttr', 'target').click();
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Form "¿Necesitas Ayuda?"', () => {
@@ -359,75 +312,69 @@ context('Categoria Plantilla PPC', () => {
 
     it('Sección Categorias Relacionadas', () => {
         cy.get('.feature-box > :nth-child(1) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Abogados').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('Software de Gestión de Contratos').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get('.feature-box > :nth-child(2) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Gestión Agropecuaria').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('Software CRM Inmobiliario').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get('.feature-box > :nth-child(3) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Administración de Condominios').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('Software de Ventas').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get('.feature-box > :nth-child(4) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software para Restaurante').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('Online CRM Software').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get('.feature-box > :nth-child(5) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Alquiler de Propiedades').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('CRM para Pymes').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get('.feature-box > :nth-child(6) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software para Concesionarios').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(7) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Construcción').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(8) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Gestión').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(9) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software para Gimnasios').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(10) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software Inmobiliarios').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(11) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software Médico para Clínicas').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(12) > .justify-start > .text-neutral-500').click();
-        cy.contains('Software de Odontología').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
-        cy.get('.feature-box > :nth-child(13) > .justify-start > .text-neutral-500').click();
-        cy.contains('Programa para crear rutinas de entrenamiento').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('Software de Pasarela de Pagos').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Comparador Software vs Software', () => {
         cy.get(':nth-child(1) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get(':nth-child(2) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get(':nth-child(3) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    })
+    //Comparador top 3
+    it('Comparador Top 3', () => {
+        //CLick en primer soft
+        cy.get('.h-fit > :nth-child(1) > .text-blue-950').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Click en segundo soft
+        cy.get('.h-fit > :nth-child(2) > .text-blue-950').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //CLick en tercer Soft
+        cy.get(':nth-child(3) > .text-blue-950').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Comparar los 3 softwares
+        cy.get(':nth-child(5) > .preset-comparation').click()
+        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(3) > .flex-row > .flex-col').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
+    //Card de software en el listado
     it('Card de Software en el listado', () => {
         cy.get(':nth-child(1) > .self-stretch.items-start > .items-start.gap-3 > :nth-child(1) > .w-20 > .flex > .max-w-full').invoke('removeAttr', 'target').click();
         //Boton cotizar
@@ -448,72 +395,88 @@ context('Categoria Plantilla PPC', () => {
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(3) > .flex-row > .flex-col').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
-    // Banner Chat Whatsapp
-    // it.only('Banner chat WPP' , ()=>{
-    //     cy.get('.bg-white').contains('Iniciar chat').click();
+    it('Top Software $Software - Carrousel',() =>{
+        //Primer Soft
+        cy.get('#carousel-prices-arya > :nth-child(1) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Segundo Soft
+        cy.get('#carousel-prices-arya > :nth-child(2) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Tercer soft
+        cy.get('#carousel-prices-arya > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Cuarto Soft
+        cy.get('#carousel-prices-arya > :nth-child(4) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Mover carrousel 4 veces
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        //Quinto Soft
+        cy.get('#carousel-prices-arya > :nth-child(5) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Sexto Soft
+        cy.get('#carousel-prices-arya > :nth-child(6) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Septimo Soft
+        cy.get('#carousel-prices-arya > :nth-child(7) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Octavo Soft
+        cy.get('#carousel-prices-arya > :nth-child(8) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Mover carrousel dos veces
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        cy.get('button[onclick="moveManual(\'forward\',225,4)"]').click();
+        //Noveno Soft 
+        cy.get('#carousel-prices-arya > :nth-child(9) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+        //Decimo soft
+        cy.get('#carousel-prices-arya > :nth-child(10) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    })
+
+    //Seccion Software Seleccionado (Dejar comentado hasta encontrar solución)
+    // it.only('Seccion Soft Seleccionado', () => {
+    //     //Primer Soft
+    //     //Click en el nombre
+    //     cy.get('.gap-4 > :nth-child(1) > .h-11 > .btn').click();
+    //     cy.get('#soft-title > .font-medium').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/veterinario');
     // })
 
-
-    //Seccion "software seleccionado"
-    it('Seccion Soft Seleccionado', () => {
-        //Primer Soft
-        //Click en el nombre
-        cy.get(':nth-child(1) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click en la imagen
-        cy.get(':nth-child(1) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click en boton "ver mas"
-        cy.get(':nth-child(1) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Segundo soft
-        //Click en el nombre
-        cy.get(':nth-child(2) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click en la imagen
-        // cy.get(':nth-child(2) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
-        // cy.get('.col-8 > .text-global-azul-dark').should('exist');
-        // cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Tercer Soft
-        //Click en el nombre
-        cy.get(':nth-child(3) > .items-center > .flex-col > .justify-start > .w-full').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click en la imagen
-        cy.get('.mb-20 > .grid > :nth-child(3) > .items-center > .relative > .w-20 > .track-click > .rounded').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-        //Click en boton "ver mas"
-        cy.get('.mb-20 > .grid > :nth-child(3) > .self-stretch > .btn').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
-    })
-
-    it('Footer', () => {
+    //Footer
+    it.only('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').click();
-        cy.contains('¿Qué hacemos?|').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.contains('¿Qué hacemos?').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
 
         cy.get(':nth-child(4) > .gral-link-eventos').click();
         cy.contains('Que tu reseña traspase la pantalla.').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         
         cy.get('.tagm-gral-link-servicios').click()
         cy.contains('Presencia en listados').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('.tagm-gral-link-sesion-prove').click();
         cy.contains('Iniciar Sesión').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('.justify-evenly > :nth-child(2) > :nth-child(4) > :nth-child(1) > .flex').click();
         cy.contains('Registra tu Software').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('.justify-evenly > :nth-child(2) > :nth-child(4) > :nth-child(2) > .flex').click();
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -523,7 +486,6 @@ context('Categoria Plantilla PPC', () => {
             }
         })
         cy.contains('Regístrate como partner').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
     });
 })
-

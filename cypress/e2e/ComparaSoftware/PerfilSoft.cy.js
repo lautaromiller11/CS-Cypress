@@ -328,9 +328,20 @@ context('Perfil de Sotfware', () => {
     
     
     //Sección alternativas a $Software ------> Enlaces en pestaña nueva, dejar en pausa por ahora
-    // it.only('Seccion Alternativas a $Software', () =>{
-    //     cy.get(':nth-child(2) > .flex-row > .flex-col > .w-full > .text-global-gris-5 > .text-ellipsis').invoke('removeAttr', 'target').click();c
-    // })
+    it('Seccion Alternativas a $Software', () =>{
+        //Primer Soft
+        cy.get('.p-6.items-start > :nth-child(2) > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+        //Segundo Soft
+        cy.get('.p-6.items-start > :nth-child(3) > .btn').invoke('removeAttr', 'target').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+        //Tercer Soft
+        cy.get(':nth-child(4) > .btn')
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+    })
 
     //Comparador Software vs Software
     it('Comparador Software vs Software', () =>{
@@ -425,44 +436,43 @@ context('Perfil de Sotfware', () => {
     })
 
         //Banner escribir una resñea
-        //Dejar comentado, cypresss no toma la page
-        // it.only('Banner Reseña', () =>{
-        //     cy.get('.pt-4 > .btn').click();
-        //     cy.wait(2000);
-        //     cy.get('#name').type('Nombre Reseña Test');
-        //     cy.get('#email').type('correoreseñaprueba@gmail.com');
-        //     cy.get('#bussines').type('Empresa prueba');
-        //     cy.get(':nth-child(6) > #custom-select > .select-selected').click();
-        //     cy.get(':nth-child(6) > #custom-select > .select-items > :nth-child(3)').click();
-        //     cy.get(':nth-child(7) > #custom-select > .select-selected').click();
-        //     cy.get(':nth-child(7) > #custom-select > .select-items > :nth-child(3)').click();
-        //     cy.get('#next-btn').click();
-        //     cy.get('#range-data-0').invoke('val', 9).trigger('input');
-        //     cy.get('#range-data-1').invoke('val', 7).trigger('input');
-        //     cy.get('#range-data-2').invoke('val', 5).trigger('input');
-        //     cy.get('#range-data-3').invoke('val', 3).trigger('input');
-        //     cy.get('#btn-reco-9').click();
-        //     cy.get('#next-btn').click();
-        //     cy.get('#pros').type('Pros Prueba Reseña: ¿Qué es lo que más te gusta de Bind?');
-        //     cy.get('#contra').type('Contra: ¿Qué características mejorarías del software?');
-        //     cy.get('#user-ex').type('Describe tu experiencia Describe tu experiencia');
-        //     cy.get('#form-3 > :nth-child(5) > input').click();
-        //     cy.wait(1000);
-        //     cy.get('#switch_product_from').type('Nombre Soft Prueba');
-        //     cy.get('#switch_reason').type('¿Por qué realizaste el cambio? ¿Por qué realizaste el cambio?');
-        //     cy.get(':nth-child(8) > #custom-select > .select-selected').click();
-        //     cy.get(':nth-child(8) > #custom-select > .select-items > :nth-child(2)').click();
-        //     cy.get(':nth-child(9) > #custom-select > .select-selected').click();
-        //     cy.get(':nth-child(9) > #custom-select > .select-items > :nth-child(3)').click();
-        //     cy.get(':nth-child(12) > div > .radio-rol').click();
-        //     cy.get('#submit-btn').click();
-        //     cy.get('h1').should('exist');
-        //     cy.visit('https://www.dev.comparasoftware.com/bind');
-        // })
+        it('Banner Reseña', () =>{
+            cy.get('.pt-4 > .btn').click();
+            cy.wait(2000);
+            cy.get('#name').type('Nombre Reseña Test');
+            cy.get('#email').type('correoreseñaprueba@gmail.com');
+            cy.get('#bussines').type('Empresa prueba');
+            cy.get(':nth-child(6) > #custom-select > .select-selected').click();
+            cy.get(':nth-child(6) > #custom-select > .select-items > :nth-child(3)').click();
+            cy.get(':nth-child(7) > #custom-select > .select-selected').click();
+            cy.get(':nth-child(7) > #custom-select > .select-items > :nth-child(3)').click();
+            cy.get('#next-btn').click();
+            cy.get('#range-data-0').invoke('val', 9).trigger('input');
+            cy.get('#range-data-1').invoke('val', 7).trigger('input');
+            cy.get('#range-data-2').invoke('val', 5).trigger('input');
+            cy.get('#range-data-3').invoke('val', 3).trigger('input');
+            cy.get('#btn-reco-9').click();
+            cy.get('#next-btn').click();
+            cy.get('#pros').type('Pros Prueba Reseña: ¿Qué es lo que más te gusta de Bind?');
+            cy.get('#contra').type('Contra: ¿Qué características mejorarías del software?');
+            cy.get('#user-ex').type('Describe tu experiencia Describe tu experiencia');
+            cy.get('#form-3 > :nth-child(5) > input').click();
+            cy.wait(1000);
+            cy.get('#switch_product_from').type('Nombre Soft Prueba');
+            cy.get('#switch_reason').type('¿Por qué realizaste el cambio? ¿Por qué realizaste el cambio?');
+            cy.get(':nth-child(8) > #custom-select > .select-selected').click();
+            cy.get(':nth-child(8) > #custom-select > .select-items > :nth-child(2)').click();
+            cy.get(':nth-child(9) > #custom-select > .select-selected').click();
+            cy.get(':nth-child(9) > #custom-select > .select-items > :nth-child(3)').click();
+            cy.get(':nth-child(12) > div > .radio-rol').click();
+            cy.get('#submit-btn').click();
+            cy.get('h1').should('exist');
+            cy.visit('https://www.dev.comparasoftware.com/bind');
+        })
 
 
             // Footer 
-    it('Nuestra Empresa | Footer', () => {
+    it('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');

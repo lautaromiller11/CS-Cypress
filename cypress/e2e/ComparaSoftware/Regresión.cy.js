@@ -201,7 +201,7 @@ context('Home', () => {
     // Cards Registro, Seccion publicar un Software
     it('Cards Registro, Seccion publicar un Software - Fabricante Soft', () => {
         const correoElectronico = generarCorreoElectronico();
-        cy.get('.justify-between > .btn').click();
+        cy.get('.justify-between > .btn > img').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -284,7 +284,7 @@ context('Home', () => {
             cy.contains(categoria).should('exist');
             cy.visit('https://www.dev.comparasoftware.com/');
         });
-        cy.contains(':nth-child(11) > .home-container > .justify-center > .btn', 'Ver todas las categorías').click();
+        cy.get('a[href="/categorias"]').contains('Ver todas las categorías').click();
         cy.contains('¿Qué tipo de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/');
     })
