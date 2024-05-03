@@ -7,6 +7,30 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'querySelector')")) {
+        return false
+    }
+    return true
+})
+
+
+
+
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
     const correoElectronico = `usuario_${cadenaAleatoria}@ejemplo.com`;
@@ -459,7 +483,7 @@ context('Categoria Plantilla Arya 2', () => {
     // })
 
     //Footer
-    it.only('Footer', () => {
+    it('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');

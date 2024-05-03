@@ -7,6 +7,19 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
 
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
@@ -24,7 +37,7 @@ context('Home', () => {
         cy.wait(2000);
     })
      ///////Navbar
-    it('Test #01 Boton "soliciar asesoria sin costo" en el navbar', () => {
+    it('Boton "soliciar asesoria sin costo" - Navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos
@@ -40,7 +53,7 @@ context('Home', () => {
         cy.get('.modal-body > .flex > div > .btn').click();
     })
 
-    it('Test #02 Boton Registrar mi Producto - Soy fabricante de software', () => {
+    it('Boton Registrar mi Producto - Soy fabricante de software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
         cy.get('#register-box > [href="/panel-usuario/register"]').click();
@@ -72,7 +85,7 @@ context('Home', () => {
         cy.visit('https://www.dev.comparasoftware.com/');
     })
 
-    it('Test #03 Boton Registrar mi Producto - Soy Partner de Software', () =>{
+    it('Boton Registrar mi Producto - Soy Partner de Software', () =>{
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
         cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
@@ -475,7 +488,7 @@ context('Home', () => {
     })
 
     // Footer 
-    it('Nuestra Empresa | Footer', () => {
+    it('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/');

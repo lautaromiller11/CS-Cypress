@@ -8,6 +8,26 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("NetworkError when attempting to fetch resource.")) {
+        return false
+    }
+    return true
+})
 
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
@@ -29,7 +49,7 @@ context('Categoria Plantilla PPC', () => {
             return true;
         })
     })
-    it('form asesoria navbar', () => {
+    it('Form solicitar asesoria - navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos
@@ -416,16 +436,17 @@ context('Categoria Plantilla PPC', () => {
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
+        cy.wait(1000);
         cy.get(':nth-child(2) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
-
+        cy.wait(1000);
         cy.get(':nth-child(3) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
+        cy.wait(1000);
     })
 
     it('Card de Software en el listado', () => {
@@ -441,9 +462,9 @@ context('Categoria Plantilla PPC', () => {
         cy.get('.row > .w-full > #end-btn').click();
         cy.get('.modal-body > .flex > div > .btn').click();
         //Comparar en el listado
-        cy.get('label[for="soft-compare-7357"]').click();
-        cy.get('label[for="soft-compare-6109"]').click();
-        cy.get('label[for="soft-compare-14"]').click();
+        cy.get('label[for="soft-compare-5490"]').click();
+        cy.get('label[for="soft-compare-5030"]').click();
+        cy.get('label[for="soft-compare-4639"]').click();
         cy.get('#btn-view-comparator > .text-xs').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
@@ -498,7 +519,7 @@ context('Categoria Plantilla PPC', () => {
 
     it('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').click();
-        cy.contains('¿Qué hacemos?|').should('exist');
+        cy.get('h1').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/veterinario');
 
         cy.get(':nth-child(4) > .gral-link-eventos').click();

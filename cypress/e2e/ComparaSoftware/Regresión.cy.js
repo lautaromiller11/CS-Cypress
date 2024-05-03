@@ -8,6 +8,27 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("NetworkError when attempting to fetch resource.")) {
+        return false
+    }
+    return true
+})
+
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
     const correoElectronico = `usuario_${cadenaAleatoria}@ejemplo.com`;

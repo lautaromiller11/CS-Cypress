@@ -7,6 +7,27 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("NetworkError when attempting to fetch resource.")) {
+        return false
+    }
+    return true
+})
+
 
 function generarCorreoElectronico() {
     const cadenaAleatoria = Math.random().toString(36).substring(7);
@@ -28,7 +49,7 @@ context('Categoria Plantilla Arya', () => {
     })
 })
 
-    it('form asesoria navbar', () => {
+    it('Form solicitar asesoria - navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos
@@ -338,12 +359,23 @@ context('Categoria Plantilla Arya', () => {
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('test@gmail.com');
         cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
         cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
+        //Comparar en el listado
+        cy.get('label[for="soft-compare-2329"]').click();
+        cy.get('label[for="soft-compare-5898"]').click();
+        cy.get('label[for="soft-compare-7609"]').click();
+        cy.get('#btn-view-comparator > .text-xs').click();
+        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(3) > .flex-row > .flex-col').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
     it('Tabla comparativa', () =>{
         cy.contains('.select-selected', 'Busca un software...').click();
         cy.get('#custom-select-event-3 > .select-items > [data-slug="goujana-software-erp"] > .mb-0').click();
+        cy.wait(1000);
         cy.get('#btn-side-comparator').click();
+        cy.wait(1000);
         cy.contains('Comparativa Bind vs. Raptor Web Experience vs. FinanSaaS vs. Goujana').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })

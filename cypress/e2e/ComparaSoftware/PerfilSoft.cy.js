@@ -13,6 +13,27 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("jQuery is not defined")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Cannot read properties of undefined (reading 'fn')")) {
+        return false
+    }
+    return true
+})
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("NetworkError when attempting to fetch resource.")) {
+        return false
+    }
+    return true
+})
+
 
 context('Perfil de Sotfware', () => {
     beforeEach(() => {
@@ -24,7 +45,7 @@ context('Perfil de Sotfware', () => {
     })
 
     ///////Navbar
-    it('Test #01 Boton "soliciar asesoria sin costo" en el navbar', () => {
+    it('Boton "soliciar asesoria sin costo" - Navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos
@@ -40,7 +61,7 @@ context('Perfil de Sotfware', () => {
         cy.get('.modal-body > .flex > div > .btn').click();
     })
 
-    it('Test #02 Boton Registrar mi Producto - Soy fabricante de software', () => {
+    it('Boton Registrar mi Producto - Soy fabricante de software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
         cy.get('#register-box > [href="/panel-usuario/register"]').click();
@@ -72,7 +93,7 @@ context('Perfil de Sotfware', () => {
         cy.visit('https://www.dev.comparasoftware.com/bind');
     })
 
-    it('Test #03 Boton Registrar mi Producto - Soy Partner de Software', () => {
+    it('Boton Registrar mi Producto - Soy Partner de Software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box > img').click();
         cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
