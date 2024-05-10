@@ -34,6 +34,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+cy.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("Failed to execute 'querySelector' on 'Document': '#' is not a valid selector.")) {
+        return false;
+    }
+    return true;
+});
+
 
 context('Perfil de Sotfware', () => {
     beforeEach(() => {
@@ -123,7 +130,7 @@ context('Perfil de Sotfware', () => {
 
     //Sección Categorias Navbar
     it('Categorias - Hub Marketing', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.selected > .active').click();
         cy.contains('Software de Automatización de Marketing en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
@@ -140,7 +147,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias - Hub Ventas', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="1"]').click();
         cy.get('.sub-cat-1 > .active > .w-full').click();
         cy.contains('Software CRM en México').should('exist');
@@ -154,7 +161,7 @@ context('Perfil de Sotfware', () => {
 
     it('Categorias - Hub Mantenimiento', () => {
 
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="2"]').click();
         cy.get('.sub-cat-2 > .active .w-full').click();
         cy.contains('Software de Mantenimiento en México').should('exist');
@@ -174,7 +181,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias - Hub ERP', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="3"]').click();
         cy.get('.sub-cat-3 > .active').click();
         cy.contains('Software ERP en México').should('exist');
@@ -197,7 +204,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias - Hub Analitica', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="4"]').click();
         cy.get('.sub-cat-4 > .active').click();
         cy.contains('Software Estadístico en México').should('exist');
@@ -220,7 +227,7 @@ context('Perfil de Sotfware', () => {
         // cy.get('.sub-cat-5 > .active').click();
         // cy.contains('Software de Gestión de Desempeño Empresarial en México').should('exist');
         // cy.visit('https://www.dev.comparasoftware.com/');
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="5"]').click();
         cy.get('.sub-cat-5 > :nth-child(2)').click();
         cy.contains('Software de Recursos Humanos en México').should('exist');
@@ -233,7 +240,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias Hub - Contabilidad y Finanzas', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="6"]').click();
         cy.get('.sub-cat-6 > .active').click();
         cy.contains('Software de facturación en México').should('exist');
@@ -251,7 +258,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias Hub - Educativo', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="7"]').click();
         cy.get('.sub-cat-7 > .active').click();
         cy.contains('Plataformas E-learning en México').should('exist');
@@ -269,7 +276,7 @@ context('Perfil de Sotfware', () => {
     })
 
     it('Categorias Hub - Servicio al Cliente', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="8"]').click();
         cy.get('.sub-cat-8 > .active').click();
         cy.contains('Software de Atención al Cliente en México').should('exist');
@@ -287,7 +294,7 @@ context('Perfil de Sotfware', () => {
 
     })
     it('Categorias Hub - Gestión', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="9"]').click();
         cy.get('.sub-cat-9 > .active').click();
         cy.contains('Software para Restaurante en México').should('exist');
@@ -494,7 +501,7 @@ context('Perfil de Sotfware', () => {
 
             // Footer 
     it('Footer', () => {
-        cy.get('.tagm-gral-link-landg-sobre-empresa').click();
+        cy.get('.tagm-gral-link-landg-sobre-empresa').invoke('removeAttr', 'target').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 

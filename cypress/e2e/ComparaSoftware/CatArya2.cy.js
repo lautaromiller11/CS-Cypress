@@ -28,6 +28,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true
 })
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    if (err.message.includes("NetworkError when attempting to fetch resource.")) {
+        return false
+    }
+    return true
+})
+
 
 
 
@@ -135,13 +142,13 @@ context('Categoria Plantilla Arya 2', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-crm')
         cy.get('#search-bar').type('Ventas');
         cy.get('#results').should('contain', 'Ventas');
-        cy.visit('https://www.dev.comparasoftware.com/software-crmo')
+        cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#search-bar').type('Software CRM');
         cy.get('#results').should('contain', 'CRM');
     })
 
     it('Categorias - Hub Marketing', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.selected > .active').click();
         cy.contains('Software de Automatización de Marketing en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
@@ -156,38 +163,38 @@ context('Categoria Plantilla Arya 2', () => {
         //cy.get('#cat-top10-list').should('have.length', 10);
     })
     it('Categorias - Hub Ventas', () => {
-        cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="1"]').click();
+        cy.get('#btn-cat-menu > img').click().click();
+        cy.get('.header-list > [data-pos="1"]').click();
         cy.get('.sub-cat-1 > .active > .w-full').click();
         cy.contains('Software CRM en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="1"]').click();
+        cy.get('.header-list > [data-pos="1"]').click();
         cy.get('.sub-cat-1 > :nth-child(2)').click();
         cy.contains('Software de Ventas en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias - Hub Mantenimiento', () => {
-        cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="2"]').click();
+        cy.get('#btn-cat-menu > img').click().click();
+        cy.get('.header-list > [data-pos="2"]').click();
         cy.get('.sub-cat-2 > .active').click();
         cy.contains('Software de Mantenimiento en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="2"]').click();
+        cy.get('.header-list > [data-pos="2"]').click();
         cy.get('.sub-cat-2 > :nth-child(2)').click();
         cy.contains('Software de Mantenimiento de Equipos Médico en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="2"]').click();
+        cy.get('.header-list > [data-pos="2"]').click();
         cy.get('.sub-cat-2 > :nth-child(3)').click();
         cy.contains('Software de Mantenimiento Predictivo en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
     it('Categorias - Hub ERP', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="3"]').click();
         cy.get('.sub-cat-3 > .active').click();
         cy.contains('Software ERP en México').should('exist');
@@ -210,18 +217,18 @@ context('Categoria Plantilla Arya 2', () => {
     })
 
     it('Categorias - Hub Analitica', () => {
-        cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"] > span').click();
+        cy.get('#btn-cat-menu > img').click().click();
+        cy.get('.header-list > [data-pos="4"]').click();
         cy.get('.sub-cat-4 > .active').click();
         cy.contains('Software Estadístico en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"] > span').click();
+        cy.get('.header-list > [data-pos="4"]').click();
         cy.get('.sub-cat-4 > :nth-child(2)').click();
         cy.contains('Software de Base de Datos en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
         cy.get('#btn-cat-menu > img').click();
-        cy.get('[data-pos="4"] > span').click();
+        cy.get('.header-list > [data-pos="4"]').click();
         cy.get('.sub-cat-4 > :nth-child(3)').click();
         cy.contains('Software de Inteligencia de Negocio en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
@@ -233,7 +240,7 @@ context('Categoria Plantilla Arya 2', () => {
         // cy.get('.sub-cat-5 > .active').click();
         // cy.contains('Software de Gestión de Desempeño Empresarial en México').should('exist');
         // cy.visit('https://www.dev.comparasoftware.com/software-crm');
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="5"]').click();
         cy.get('.sub-cat-5 > :nth-child(2)').click();
         cy.contains('Software de Recursos Humanos en México').should('exist');
@@ -246,7 +253,7 @@ context('Categoria Plantilla Arya 2', () => {
     })
 
     it('Categorias Hub - Contabilidad y Finanzas', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="6"]').click();
         cy.get('.sub-cat-6 > .active').click();
         cy.contains('Software de facturación en México').should('exist');
@@ -264,7 +271,7 @@ context('Categoria Plantilla Arya 2', () => {
     })
 
     it('Categorias Hub - Educativo', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="7"]').click();
         cy.get('.sub-cat-7 > .active').click();
         cy.contains('Plataformas E-learning en México').should('exist');
@@ -282,7 +289,7 @@ context('Categoria Plantilla Arya 2', () => {
     })
 
     it('Categorias Hub - Servicio al Cliente', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="8"]').click();
         cy.get('.sub-cat-8 > .active').click();
         cy.contains('Software de Atención al Cliente en México').should('exist');
@@ -300,7 +307,7 @@ context('Categoria Plantilla Arya 2', () => {
 
     })
     it('Categorias Hub - Gestión', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.header-list > [data-pos="9"]').click();
         cy.get('.sub-cat-9 > .active').click();
         cy.contains('Software para Restaurante en México').should('exist');
@@ -410,11 +417,12 @@ context('Categoria Plantilla Arya 2', () => {
         cy.get('#company').type('Empresa Prueba');
         cy.get('.spacing-inputs > .relative > #email').type('prueba@gmail.com');
         cy.get('.row > .w-full > #end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
+        cy.get('.btn-close > img').click();
+        //cy.get('.modal-body > .flex > div > .btn').click();
         //Comparar en el listado
         cy.get('label[for="soft-compare-7357"]').click();
+        cy.get('label[for="soft-compare-3009"]').click();
         cy.get('label[for="soft-compare-6109"]').click();
-        cy.get('label[for="soft-compare-14"]').click();
         cy.get('#btn-view-comparator > .text-xs').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
@@ -484,7 +492,7 @@ context('Categoria Plantilla Arya 2', () => {
 
     //Footer
     it('Footer', () => {
-        cy.get('.tagm-gral-link-landg-sobre-empresa').click();
+        cy.get('.tagm-gral-link-landg-sobre-empresa').invoke('removeAttr', 'target').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
 

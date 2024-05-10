@@ -51,7 +51,7 @@ context('Categoria Plantilla Arya', () => {
 
     it('Form solicitar asesoria - navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
-        cy.contains('Solicitar asesoría sin costo').click();
+        cy.get('a.btn.btn-primary.btn-form').contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos
         cy.get('#option-7c46edc9e9d44dda6c288141197e8325-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Test');
         cy.get('#option-7c46edc9e9d44dda6c288141197e8325-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('341665553');
@@ -125,7 +125,7 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('Campo Buscar - Home', () => {
+    it('Campo Buscar - Navbar', () => {
         cy.get('#search-bar').type('Raptor Web Experience');
         cy.get('li > .relative').should('contain', 'Raptor Web Experience');
         cy.visit('https://www.dev.comparasoftware.com/software-erp')
@@ -137,7 +137,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias - Hub Marketing', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('.selected > .active').click();
         cy.contains('Software de Automatización de Marketing en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
@@ -153,7 +153,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias - Hub Ventas', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="1"]').click();
         cy.get('.sub-cat-1 > .active > .w-full').click();
         cy.contains('Software CRM en México').should('exist');
@@ -166,7 +166,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias - Hub Mantenimiento', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="2"]').click();
         cy.get('.sub-cat-2 > .active').click();
         cy.contains('Software de Mantenimiento en México').should('exist');
@@ -184,7 +184,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias - Hub ERP', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="3"]').click();
         cy.get('.sub-cat-3 > .active').click();
         cy.contains('Software ERP en México').should('exist');
@@ -207,7 +207,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias - Hub Analitica', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="4"]').click();
         cy.get('.sub-cat-4 > .active').click();
         cy.contains('Software Estadístico en México').should('exist');
@@ -230,7 +230,7 @@ context('Categoria Plantilla Arya', () => {
         // cy.get('.sub-cat-5 > .active').click();
         // cy.contains('Software de Gestión de Desempeño Empresarial en México').should('exist');
         // cy.visit('https://www.dev.comparasoftware.com/software-erp');
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="5"]').click();
         cy.get('.sub-cat-5 > :nth-child(2)').click();
         cy.contains('Software de Recursos Humanos en México').should('exist');
@@ -243,7 +243,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias Hub - Contabilidad y Finanzas', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="6"]').click();
         cy.get('.sub-cat-6 > .active').click();
         cy.contains('Software de facturación en México').should('exist');
@@ -261,7 +261,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias Hub - Educativo', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="7"]').click();
         cy.get('.sub-cat-7 > .active').click();
         cy.contains('Plataformas E-learning en México').should('exist');
@@ -279,7 +279,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Categorias Hub - Servicio al Cliente', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="8"]').click();
         cy.get('.sub-cat-8 > .active').click();
         cy.contains('Software de Atención al Cliente en México').should('exist');
@@ -297,7 +297,7 @@ context('Categoria Plantilla Arya', () => {
 
     })
     it('Categorias Hub - Gestión', () => {
-        cy.get('#btn-cat-menu > img').click();
+        cy.get('#btn-cat-menu > img').click().click();
         cy.get('[data-pos="9"]').click();
         cy.get('.sub-cat-9 > .active').click();
         cy.contains('Software para Restaurante en México').should('exist');
@@ -411,7 +411,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
     it('Footer', () => {
-        cy.get('.tagm-gral-link-landg-sobre-empresa').click();
+        cy.get('.tagm-gral-link-landg-sobre-empresa').invoke('removeAttr', 'target').click();
         cy.contains('¿Qué hacemos?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
