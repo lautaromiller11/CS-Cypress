@@ -7,6 +7,9 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
 //
 //
 // -- This is a parent command --

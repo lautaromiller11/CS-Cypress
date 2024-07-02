@@ -45,10 +45,11 @@ context('Home', () => {
     })
 
     /// Test Criticos del Home ///
-
-    //Boton Solcitar Asesoria sin costo en el navbar
-    it('Boton "soliciar asesoria sin costo" en el navbar', () => {
+     ///////Navbar
+    it('Boton "soliciar asesoria sin costo" - Navbar', () => {
+        // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
+        // relleno de formulario introduciendo datos válidos
         cy.get('#firstname').type('Nombre Test');
         cy.get('#phone').type('341665553');
         cy.get('#company').type('Empresa Test');
@@ -65,7 +66,7 @@ context('Home', () => {
     it('Boton Registrar mi Producto - Soy fabricante de software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
-        cy.get('#register-box > [href="/panel-usuario/register"]').click();
+        cy.get('#register-box > .w-full > [href="/panel-usuario/register"] > span').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
@@ -95,15 +96,15 @@ context('Home', () => {
     })
 
     //Registrar mi Producto - Soy Partner de Software
-    it('Registrar mi Producto - Soy Partner de Software', () => {
+    it('Boton Registrar mi Producto - Soy Partner de Software', () =>{
         const correoElectronico = generarCorreoElectronico();
-        cy.get('#btn-register-box > img').click();
-        cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
+        cy.get('#btn-register-box').click();
+        cy.get('#register-box > .w-full > [href="/panel-usuario/partner-register"] > span').click();
         cy.wait(2000);
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
             if (err.message.includes('ResizeObserver')) {
-                stub()
+                stub() 
                 return false
             }
         })
@@ -124,16 +125,18 @@ context('Home', () => {
     })
 
     /// Seccion Buscador 
-    it('Campo Buscar - Home', () => {
-        cy.get('#search-bar').type('Raptor Web Experience');
+    it('Campo Buscar - Home', () =>{
+        cy.get('.pt-32 > .search-bar > .border').type('Raptor Web Experience');
         cy.get('li > .relative').should('contain', 'Raptor Web Experience');
         cy.visit('https://www.dev.comparasoftware.com/')
-        cy.get('#search-bar').type('Ventas');
-        cy.get('#results').should('contain', 'Ventas');
+        cy.get('.pt-32 > .search-bar > .border').type('Ventas');
+        cy.get('#results > :nth-child(5)').should('contain', 'Ventas');
         cy.visit('https://www.dev.comparasoftware.com/')
-        cy.get('#search-bar').type('Software CRM');
-        cy.get('#results').should('contain', 'CRM');
+        cy.get('.pt-32 > .search-bar > .border').type('Software CRM');
+        cy.get('#results > :nth-child(2)').should('contain', 'CRM');
+        cy.visit('https://www.dev.comparasoftware.com/');
     })
+
 
     // Seccion "Impulsamos la digitalizacion empresarial"
     //Primer Form Solicitar asesoria
@@ -311,9 +314,9 @@ context('Home', () => {
     })
 
 
-    //Casos Criticos Soft Arya
 
     // Casos Críticos Soft Arya
+
     context('Perfil de Software - Arya', () => {
         cy.on('uncaught:exception', (err, runnable) => {
             // Verificar si la excepción es la que quieres ignorar
@@ -343,7 +346,7 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/bind');
             const correoElectronico = generarCorreoElectronico();
             cy.get('#btn-register-box').click();
-            cy.get('#register-box > [href="/panel-usuario/register"]').click();
+            cy.get('#register-box > .w-full  [href="/panel-usuario/register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -375,8 +378,8 @@ context('Home', () => {
         it('Boton Registrar mi Producto - Soy Partner de Software', () => {
             cy.visit('https://www.dev.comparasoftware.com/bind');
             const correoElectronico = generarCorreoElectronico();
-            cy.get('#btn-register-box > img').click();
-            cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
+            cy.get('#btn-register-box').click();
+            cy.get('#register-box > .w-full > [href="/panel-usuario/partner-register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -400,18 +403,19 @@ context('Home', () => {
             cy.wait(2000);
             cy.visit('https://www.dev.comparasoftware.com/bind');
         })
-        /// Seccion Buscador 
-        it('Campo Buscar', () => {
-            cy.visit('https://www.dev.comparasoftware.com/bind');
-            cy.get('#search-bar').type('Raptor Web Experience');
-            cy.get('li > .relative').should('contain', 'Raptor Web Experience');
-            cy.visit('https://www.dev.comparasoftware.com/bind')
-            cy.get('#search-bar').type('Ventas');
-            cy.get('#results').should('contain', 'Ventas');
-            cy.visit('https://www.dev.comparasoftware.com/bind');
-            cy.get('#search-bar').type('Software CRM');
-            cy.get('#results').should('contain', 'CRM');
-        })
+
+    /// Seccion Buscador 
+    it('Campo Buscar - Navbar', () => {
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+        cy.get('.justify-self-start > .search-bar').type('Raptor Web Experience');
+        cy.get('li > .relative').should('contain', 'Raptor Web Experience');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp')
+        cy.get('.justify-self-start > .search-bar').type('Ventas');
+        cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'Ventas');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp')
+        cy.get('.justify-self-start > .search-bar').type('Software CRM');
+        cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'CRM');
+    })
 
         it('Boton Ver Precio | Boton Prueba Gratis', () => {
             //Ver precio
@@ -506,7 +510,8 @@ context('Home', () => {
 
     /// Casos criticos Categoria Arya
     context('Categoria Arya', () => {
-        it('form asesoria navbar', () => {
+
+        it('Form asesoria navbar', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
             // hacer click en el boton "solicitar asesoria sin costo"
             cy.contains('Solicitar asesoría sin costo').click();
@@ -526,7 +531,7 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
             const correoElectronico = generarCorreoElectronico();
             cy.get('#btn-register-box').click();
-            cy.get('#register-box > [href="/panel-usuario/register"]').click();
+            cy.get('#register-box > .w-full > [href="/panel-usuario/register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -559,8 +564,8 @@ context('Home', () => {
         it('Boton Registrar mi Producto - Soy Partner de Software', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
             const correoElectronico = generarCorreoElectronico();
-            cy.get('#btn-register-box > img').click();
-            cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
+            cy.get('#btn-register-box').click();
+            cy.get('#register-box > .w-full > [href="/panel-usuario/partner-register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -585,18 +590,17 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
         })
 
-        it('Campo Buscar', () => {
+        it('Campo Buscar - Navbar', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp');
-            cy.get('#search-bar').type('Raptor Web Experience');
+            cy.get('.justify-self-start > .search-bar').type('Raptor Web Experience');
             cy.get('li > .relative').should('contain', 'Raptor Web Experience');
             cy.visit('https://www.dev.comparasoftware.com/software-erp')
-            cy.get('#search-bar').type('Ventas');
-            cy.get('#results').should('contain', 'Ventas');
+            cy.get('.justify-self-start > .search-bar').type('Ventas');
+            cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'Ventas');
             cy.visit('https://www.dev.comparasoftware.com/software-erp')
-            cy.get('#search-bar').type('Software CRM');
-            cy.get('#results').should('contain', 'CRM');
+            cy.get('.justify-self-start > .search-bar').type('Software CRM');
+            cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'CRM');
         })
-
 
         it('Card de Soft en el listado', () => {
             cy.visit('https://www.dev.comparasoftware.com/software-erp')
@@ -651,7 +655,7 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
             const correoElectronico = generarCorreoElectronico();
             cy.get('#btn-register-box').click();
-            cy.get('#register-box > [href="/panel-usuario/register"]').click();
+            cy.get('#register-box > .w-full > [href="/panel-usuario/register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -683,8 +687,8 @@ context('Home', () => {
         it('Boton Registrar mi Producto - Soy Partner de Software', () => {
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
             const correoElectronico = generarCorreoElectronico();
-            cy.get('#btn-register-box > img').click();
-            cy.get('#register-box > [href="/panel-usuario/partner-register"]').click();
+            cy.get('#btn-register-box').click();
+            cy.get('#register-box > .w-full > [href="/panel-usuario/partner-register"]').click();
             cy.wait(2000);
             const stub = cy.stub()
             Cypress.on('uncaught:exception', (err, runnable) => {
@@ -709,16 +713,16 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
         })
 
-        it('Campo Buscar', () => {
+        it('Campo Buscar - Navbar', () => {
             cy.visit('https://www.dev.comparasoftware.com/veterinario');
-            cy.get('#search-bar').type('Raptor Web Experience');
+            cy.get('.justify-self-start > .search-bar').type('Raptor Web Experience');
             cy.get('li > .relative').should('contain', 'Raptor Web Experience');
             cy.visit('https://www.dev.comparasoftware.com/veterinario')
-            cy.get('#search-bar').type('Ventas');
-            cy.get('#results').should('contain', 'Ventas');
+            cy.get('.justify-self-start > .search-bar').type('Ventas');
+            cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'Ventas');
             cy.visit('https://www.dev.comparasoftware.com/veterinario')
-            cy.get('#search-bar').type('Software CRM');
-            cy.get('#results').should('contain', 'CRM');
+            cy.get('.justify-self-start > .search-bar').type('Software CRM');
+            cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'CRM');
         })
 
         it('Seccion Top 4 Software', () => {
