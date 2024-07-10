@@ -320,23 +320,6 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('Sección ¿Utilizas actualmente un Software?', () =>{
-        cy.get('[data-form="form_cat_header_si"]').click();
-        cy.get(':nth-child(3) > .fw-500 > .mb-0').click();
-        cy.get(':nth-child(4) > .fw-500 > .mb-0').click();
-        cy.get(':nth-child(5) > .fw-500 > .mb-0').click();
-        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-2 > .flex > :nth-child(2) > i').click();
-        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-3 > .flex > :nth-child(4) > i').click();
-        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Prueba');
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('3416568565');
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Test');
-        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
-        cy.get('.modal-body > .text-blue > :nth-child(2) > #end-btn').click();
-    })
-
     //Calculadora
     // it.only('Calculadora' ,() =>{
     //     cy.contains('label', 'Entre 20 a 100').click();
@@ -346,14 +329,14 @@ context('Categoria Plantilla Arya', () => {
 
     it('Card de Soft en el listado', () =>{
         cy.contains('h4', 'Funcionalidades de Bind').click();
-        cy.contains('.btn-primary', 'Ver precio').click();
+        cy.contains('.btn-primary', 'Cotizar').click();
         cy.get('#option-d052b84c0c21ee58395820057c8e8393-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Prueba');
         cy.get('#option-d052b84c0c21ee58395820057c8e8393-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('341656552');
         cy.get('#option-d052b84c0c21ee58395820057c8e8393-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa prueba');
         cy.get('#option-d052b84c0c21ee58395820057c8e8393-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
         cy.get('.modal-content > .row > .w-full > #end-btn').click();
         cy.get('.modal-body > .flex > div > .btn').click();
-        cy.contains('.btn-soft-ux-a', 'Prueba gratis').click();
+        cy.get('.btn-form').contains('Prueba gratis').click();
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre prueba');
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('34165656');
         cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa prueba');
@@ -371,45 +354,104 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('Tabla comparativa', () =>{
-        cy.contains('.select-selected', 'Busca un software...').click();
-        cy.get('#custom-select-event-3 > .select-items > [data-slug="goujana-software-erp"] > .mb-0').click();
-        cy.wait(1000);
-        cy.get('#btn-side-comparator').click();
-        cy.wait(1000);
-        cy.contains('Comparativa Bind vs. Raptor Web Experience vs. FinanSaaS vs. Goujana').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+    //Se eliminó esta sección, dejar comentado
+    // it('Tabla comparativa', () =>{
+    //     cy.contains('.select-selected', 'Busca un software...').click();
+    //     cy.get('#custom-select-event-3 > .select-items > [data-slug="goujana-software-erp"] > .mb-0').click();
+    //     cy.wait(1000);
+    //     cy.get('#btn-side-comparator').click();
+    //     cy.wait(1000);
+    //     cy.contains('Comparativa Bind vs. Raptor Web Experience vs. FinanSaaS vs. Goujana').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-erp');
+    // })
+
+    it('Sección ¿Utilizas actualmente un Software?', () =>{
+        cy.get('a.btn-form[data-form="form_cat_header_si"]').eq(0).click();
+        cy.get(':nth-child(3) > .fw-500 > .mb-0').click();
+        cy.get(':nth-child(4) > .fw-500 > .mb-0').click();
+        cy.get(':nth-child(5) > .fw-500 > .mb-0').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-2 > .flex > :nth-child(2) > i').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-3 > .flex > :nth-child(4) > i').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Prueba');
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('3416568565');
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Test');
+        cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #end-btn').click();
     })
 
+
+    it('Comparador Software vs Software', () => {
+        cy.get('button.preset-comparation').eq(0).click();
+        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        cy.wait(1000);
+        cy.get('button.preset-comparation').eq(1).click();
+        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        cy.wait(1000);
+        cy.get('button.preset-comparation').eq(2).click();
+        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        cy.wait(1000);
+    })
+
+
     it('Categorias Relacionadas' ,() =>{
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(1)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de Gestión de Almacenes').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(2)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(2) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de Gestión de Pedidos').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(3)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(3) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de Recursos Humanos').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(4)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(4) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software para Inventarios').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(5)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(5) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de Logística').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(6)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(6) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de Distribución').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
-        cy.get('.hidden.mb-10 > :nth-child(1) > .flex > :nth-child(7)').click();
+        cy.get(':nth-child(4) > .flex-col > :nth-child(7) > .text-global-gris-5 > .self-center').click();
         cy.contains('Software de gestión de la cadena de suministro').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
+
+    it('Seccion Soft Seleccionado', () => {
+        //Primer Soft
+        cy.get('a[href="https://www.dev.comparasoftware.com/bind"]').contains('Bind').click();
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        //Segundo Soft
+        cy.get('a[href="https://www.dev.comparasoftware.com/finansaas"]').contains('FinanSaaS').click();
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        //Tercer soft
+        cy.get('a[href="https://www.dev.comparasoftware.com/raptor-web-experience"]').contains('Raptor Web Experience').click();
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        //Cuarto Soft
+        cy.get('a[href="https://www.dev.comparasoftware.com/sistrade-erp-cmms"]').contains('SisTrade ERP CMMS').click();
+        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+    })
+
+    it('"Sección "No encuentra lo que buscas?"', () =>{
+        cy.get('.container > .btn').click();
+        cy.get('.page-header-title').should('exist');
+    })
+
 
     it('Footer', () => {
         cy.get('.tagm-gral-link-landg-sobre-empresa').invoke('removeAttr', 'target').click();
@@ -440,4 +482,5 @@ context('Categoria Plantilla Arya', () => {
         cy.contains('Regístrate como partner').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     });
+
 })
