@@ -16,9 +16,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return true;
 });
 
-context('Categoria Plantilla Arya', () => {
+context('Categoria Plantilla PPC', () => {
     beforeEach(() => {
-        cy.visit('https://www.comparasoftware.com.ar/software-erp');
+        cy.visit('https://www.comparasoftware.com.ar/veterinario');
         cy.viewport(1480, 820);
         cy.on('uncaught:exception', (err, runnable) => {
             if (err.message.includes("toggleUnselect is not defined")) {

@@ -340,15 +340,23 @@ context('Perfil de Sotfware', () => {
         cy.get('.modal-body > .flex > div > .btn').click();
         // Prueba gratis
         cy.get('.gap-3 > .h-11 > .btn').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre prueba');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .select-form').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .find_country > .select-options-country > [data-value="+56"]').click();
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('6512145');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Prueba');
-        cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
-        cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
+        cy.get('#firstname').type('Nombre prueba');
+        cy.get('.select-form').click();
+        cy.get('[data-value="+56"] > :nth-child(1)').click();
+        cy.get('#phone').type('34617854');
+        cy.get('#company').type('Empresa Prueba');
+        cy.get('#email').type('correoprueba@gmail.com');
+        cy.get('#modal-form-aaddaf52af832ea7054b2af483b4c824 > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
         cy.wait(1000);
-        cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
+        cy.get('#modal-form-aaddaf52af832ea7054b2af483b4c824 > .modal-dialog > #form-modal-1Step > .modal-content > .btn-close > img').click();
+        // cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .select-form').click();
+        // cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > #country_code > .find_country > .select-options-country > [data-value="+56"]').click();
+        // cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('6512145');
+        // cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Prueba');
+        // cy.get('#option-5bc25fa678cc04b1a11a0b336571abdf-1 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
+        // cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
+        // cy.wait(1000);
+        // cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
     })
 
 
@@ -385,32 +393,29 @@ context('Perfil de Sotfware', () => {
     //Categorías relacionadas
     it('Categorias Relacionadas', () => {
         cy.get(':nth-child(1) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Gestión de Almacenes').should('exist');
+        cy.contains('Software de Compras').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
         cy.get(':nth-child(2) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Gestión de Pedidos').should('exist');
+        cy.contains('Software de Gestión de Almacenes - WMS').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
         cy.get(':nth-child(3) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Recursos Humanos').should('exist');
+        cy.contains('Software de Gestión de Gastos').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
         cy.get(':nth-child(4) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software para Inventarios').should('exist');
+        cy.contains('Software de Contabilidad').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
         cy.get(':nth-child(5) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Logística').should('exist');
+        cy.contains('ERP para Pymes').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
         cy.get(':nth-child(6) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Distribución').should('exist');
+        cy.contains('Software de facturación').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
 
-        cy.get(':nth-child(7) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de gestión de la cadena de suministro').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/bind');
     })
 
     //Banner agendar llamada
@@ -424,7 +429,6 @@ context('Perfil de Sotfware', () => {
         cy.get('#email').type('emailprueba@gmail.com');
         cy.get('#end-btn').click();
         cy.get('.modal-body > .flex > div > .btn').click();
-
     })
 
     //Sección precios

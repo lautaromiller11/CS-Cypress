@@ -447,10 +447,11 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('"Sección "No encuentra lo que buscas?"', () =>{
-        cy.get('.container > .btn').click();
-        cy.get('.page-header-title').should('exist');
-    })
+    // Se elimino esta seccion, dejar comentado
+    // it('"Sección "No encuentra lo que buscas?"', () =>{
+    //     cy.get('.container > .btn').click();
+    //     cy.get('.page-header-title').should('exist');
+    // })
 
 
     it('Footer', () => {

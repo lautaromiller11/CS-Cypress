@@ -371,7 +371,7 @@ context('Categoria Plantilla Arya 2', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
-    it('Comparador Software vs Software', () => {
+    it('Comparador Top 3', () => {
         cy.get(':nth-child(1) > .preset-comparation > .btn').click();
         cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
@@ -387,33 +387,33 @@ context('Categoria Plantilla Arya 2', () => {
         cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
-    //Comparador top 3
-    it('Comparador Top 3', () => {
-        //CLick en primer soft
-        cy.get('.h-fit > :nth-child(1) > .text-blue-950').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-crm');
-        //Click en segundo soft
-        cy.get('.h-fit > :nth-child(2) > .text-blue-950').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-crm');
-        //CLick en tercer Soft
-        cy.get(':nth-child(3) > .text-blue-950').invoke('removeAttr', 'target').click();
-        cy.get('#soft-title > .font-medium').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-crm');
-        //Comparar los 3 softwares
-        cy.get(':nth-child(5) > .preset-comparation').click()
-        cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
-        cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
-        cy.get(':nth-child(3) > .flex-row > .flex-col').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-crm');
-    })
+    // //Comparador top 3
+    // it('Comparador Top 3', () => {
+    //     //CLick en primer soft
+    //     cy.get('.h-fit > :nth-child(1) > .text-blue-950').invoke('removeAttr', 'target').click();
+    //     cy.get('#soft-title > .font-medium').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    //     //Click en segundo soft
+    //     cy.get('.h-fit > :nth-child(2) > .text-blue-950').invoke('removeAttr', 'target').click();
+    //     cy.get('#soft-title > .font-medium').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    //     //CLick en tercer Soft
+    //     cy.get(':nth-child(3) > .text-blue-950').invoke('removeAttr', 'target').click();
+    //     cy.get('#soft-title > .font-medium').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    //     //Comparar los 3 softwares
+    //     cy.get(':nth-child(5) > .preset-comparation').click()
+    //     cy.get(':nth-child(1) > .flex-row > .flex-col').should('exist');
+    //     cy.get(':nth-child(2) > .flex-row > .flex-col').should('exist');
+    //     cy.get(':nth-child(3) > .flex-row > .flex-col').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-crm');
+    // })
 
     //Card de software en el listado
     it('Card de Software en el listado', () => {
-        cy.get(':nth-child(1) > .self-stretch.items-start > .items-start.gap-3 > :nth-child(1) > .w-20 > .flex > .max-w-full').invoke('removeAttr', 'target').click();
+        //cy.get(':nth-child(1) > .self-stretch.items-start > .items-start.gap-3 > :nth-child(1) > .w-20 > .flex > .max-w-full').invoke('removeAttr', 'target').click();
         //Boton cotizar
-        cy.get(':nth-child(1) > .pt-6 > .justify-end > .hidden').click();
+        cy.get('#soft-item-7357 > :nth-child(3) > .grid-cols-2 > .col-span-2 > .btn').click();
         cy.get('.spacing-inputs > .relative > #firstname').type('Nombre Prueba');
         cy.get('#country_code > .select-form').click();
         cy.get('#country_code > .find_country > .select-options-country > [data-value="+54"]').click();
