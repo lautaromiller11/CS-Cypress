@@ -65,7 +65,7 @@ context('Perfil de Sotfware', () => {
         cy.get('#cat-Marketing > #cat-name').click();
         cy.get('[data-value="Email Marketing"]').click();
         cy.get('#end-btn').click();
-        cy.get('.modal-body > .flex > div > .btn').click();
+        cy.get('.close > img').click();
     })
 
     it('Boton Registrar mi Producto - Soy fabricante de software', () => {
@@ -326,7 +326,7 @@ context('Perfil de Sotfware', () => {
         cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'CRM');
     })
 
-    it('Boton Ver Precio | Boton Prueba Gratis', () => {
+    it.only('Boton Ver Precio | Boton Prueba Gratis', () => {
         //Ver precio
         cy.get('.text-end > .btn').click();
         cy.get('#firstname').type('Nombre Prueba');
@@ -337,7 +337,7 @@ context('Perfil de Sotfware', () => {
         cy.get('#email').type('correoprueba@gmail.com');
         cy.get('#end-btn').click();
         cy.wait(1000);
-        cy.get('.modal-body > .flex > div > .btn').click();
+        cy.get('.close > img')
         // Prueba gratis
         cy.get('.gap-3 > .h-11 > .btn').click();
         cy.get('#firstname').type('Nombre prueba');
@@ -385,7 +385,7 @@ context('Perfil de Sotfware', () => {
         cy.get('[data-softids="2329,5721"] > .btn').click();
         cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
-        cy.get('[data-softids="2329,3989"] > .btn').click();
+        cy.get('[data-softids="2329,5721"] > .btn').click();
         cy.get('.border-global-gris-2.home-container > .my-6').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
     })

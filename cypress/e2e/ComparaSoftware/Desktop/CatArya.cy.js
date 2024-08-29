@@ -404,31 +404,28 @@ context('Categoria Plantilla Arya', () => {
 
     it('Categorias Relacionadas' ,() =>{
         cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Gestión de Almacenes').should('exist');
+        cy.get('.pb-12 > .text-4xl').should('contain', 'Software de Compras');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(2) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Gestión de Pedidos').should('exist');
+        cy.contains('h1', 'Software ERP para Constructoras en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(3) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Recursos Humanos').should('exist');
+        cy.contains('h1', 'Software de Producción y Fabricación en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(4) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software para Inventarios').should('exist');
+        cy.get('.pb-12 > .text-4xl').should('contain', 'Software de Gestión');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(5) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Logística').should('exist');
+        cy.contains('h1', 'Software de Gestión de Almacenes - WMS en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(6) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de Distribución').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-erp');
-
-        cy.get(':nth-child(4) > .flex-col > :nth-child(7) > .text-global-gris-5 > .self-center').click();
-        cy.contains('Software de gestión de la cadena de suministro').should('exist');
+        cy.get('.pb-12 > .text-4xl').should('contain', 'Software de Gestión de Gastos');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 

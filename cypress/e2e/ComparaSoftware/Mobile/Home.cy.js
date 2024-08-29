@@ -31,7 +31,7 @@ context('Home', () => {
             { nombre: 'Software de Recursos Humanos', url: '/software-de-recursos-humanos' },
             { nombre: 'Software de Pago de Nómina', url: '/software-de-pago-de-nomina' },
             { nombre: 'Software de facturación', url: '/software-de-facturacion' },
-            { nombre: 'Firma Electrónica', url: '/software-de-firma-digital' },
+            { nombre: 'Firma Electr1ónica', url: '/software-de-firma-digital' },
             { nombre: 'Software de Cobranza', url: '/software-de-cobranza' },
             //{ nombre: 'Software de E-Learning', url: '/software-de-e-learning' },
             { nombre: 'Software Educativo', url: '/software-educativo' },
@@ -118,7 +118,7 @@ context('Home', () => {
         cy.get('#end-btn').click();
         cy.get('.modal-body > .flex > div > .btn').click();
     });
-    it.only('Buscador en el navbar', () =>{
+    it('Buscador en el navbar', () =>{
         cy.get('#search-icon-header').click();
         cy.get('.appearance-none').click().type('Raptor Web Experience')
         cy.get(':nth-child(5) > .px-2').should('contain', 'Raptor Web Experience');
