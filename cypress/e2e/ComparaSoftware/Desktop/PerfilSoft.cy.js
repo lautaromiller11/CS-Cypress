@@ -326,7 +326,7 @@ context('Perfil de Sotfware', () => {
         cy.get('.justify-self-start > .search-bar > .bg-white > #results').should('contain', 'CRM');
     })
 
-    it.only('Boton Ver Precio | Boton Prueba Gratis', () => {
+    it('Boton Ver Precio | Boton Prueba Gratis', () => {
         //Ver precio
         cy.get('.text-end > .btn').click();
         cy.get('#firstname').type('Nombre Prueba');
@@ -337,7 +337,7 @@ context('Perfil de Sotfware', () => {
         cy.get('#email').type('correoprueba@gmail.com');
         cy.get('#end-btn').click();
         cy.wait(1000);
-        cy.get('.close > img')
+        cy.get('.close > img').click();
         // Prueba gratis
         cy.get('.gap-3 > .h-11 > .btn').click();
         cy.get('#firstname').type('Nombre prueba');
@@ -466,7 +466,7 @@ context('Perfil de Sotfware', () => {
     })
 
     //Banner escribir una resñea
-    it('Banner Reseña', () => {
+        it('Banner Reseña', () => {
         cy.get('.pt-4 > .btn').click();
         cy.wait(2000);
         cy.get('#name').type('Nombre Reseña Test');

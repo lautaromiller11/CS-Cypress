@@ -314,7 +314,7 @@ context('Home', () => {
 // Seccion "Impulsamos la digitalizacion empresarial"
     it('Seccion "Impulsamos la digitalizacion empresarial" | Home', () => {
         cy.get('.gap-12 > :nth-child(1) > :nth-child(2) > .flex > .btn').click();
-        cy.contains('¿Qué tipo de software estás buscando?').should('exist');
+        cy.contains('¿Qué categoría de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/')
         cy.get(':nth-child(2) > :nth-child(2) > .flex > .btn').click();
         cy.get('#firstname').type('Nombre Test');
@@ -328,7 +328,7 @@ context('Home', () => {
         cy.get('#end-btn').click();
         cy.get('.modal-body > .flex > div > .btn').click();
         cy.get('.w-full.toggle-hidden > :nth-child(2) > .flex > .btn').click();
-        cy.contains('¿Qué tipo de software estás buscando?').should('exist');
+        cy.contains('¿Qué categoría de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/')
         cy.get('.home-container > .flex-col > .btn').click();
         cy.get('#firstname').type('Nombre Test');
@@ -484,7 +484,7 @@ context('Home', () => {
             cy.visit('https://www.dev.comparasoftware.com/');
         });
         cy.get('a[href="/categorias"]').contains('Ver todas las categorías').click();
-        cy.contains('¿Qué tipo de software estás buscando?').should('exist');
+        cy.contains('¿Qué categoría de software estás buscando?').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/');
     })
 

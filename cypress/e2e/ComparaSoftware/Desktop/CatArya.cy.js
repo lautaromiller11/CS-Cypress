@@ -46,8 +46,8 @@ context('Categoria Plantilla Arya', () => {
                 return false;
             }
             return true;
+        })
     })
-})
 
     it('Form solicitar asesoria - navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
@@ -96,7 +96,7 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('Boton Registrar mi Producto - Soy Partner de Software', () =>{
+    it('Boton Registrar mi Producto - Soy Partner de Software', () => {
         const correoElectronico = generarCorreoElectronico();
         cy.get('#btn-register-box').click();
         cy.get('#register-box > .w-full > [href="/panel-usuario/partner-register"] > span').click();
@@ -104,7 +104,7 @@ context('Categoria Plantilla Arya', () => {
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
             if (err.message.includes('ResizeObserver')) {
-                stub() 
+                stub()
                 return false
             }
         })
@@ -327,7 +327,7 @@ context('Categoria Plantilla Arya', () => {
     //     cy.get('#selector').invoke('attr', 'style', 'left: 50%').trigger('input');
     // })
 
-    it('Card de Soft en el listado', () =>{
+    it('Card de Soft en el listado', () => {
         cy.contains('h4', 'Funcionalidades de Bind').click();
         cy.contains('.btn-primary', 'Cotizar').click();
         cy.get('#option-d052b84c0c21ee58395820057c8e8393-1 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Prueba');
@@ -365,11 +365,11 @@ context('Categoria Plantilla Arya', () => {
     //     cy.visit('https://www.dev.comparasoftware.com/software-erp');
     // })
 
-    it('Sección ¿Utilizas actualmente un Software?', () =>{
+    it('Sección ¿Utilizas actualmente un Software? - Form SI', () => {
         cy.get('a.btn-form[data-form="form_cat_header_si"]').eq(0).click();
-        cy.get(':nth-child(3) > .fw-500 > .mb-0').click();
-        cy.get(':nth-child(4) > .fw-500 > .mb-0').click();
-        cy.get(':nth-child(5) > .fw-500 > .mb-0').click();
+        cy.get('.flex-col > :nth-child(2) > .fw-500 > .mb-0').click();
+        cy.get('.flex-col > :nth-child(4) > .fw-500 > .mb-0').click();
+        cy.get('.flex-col > :nth-child(5) > .fw-500 > .mb-0').click();
         cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
         cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-2 > .flex > :nth-child(2) > i').click();
         cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
@@ -380,6 +380,23 @@ context('Categoria Plantilla Arya', () => {
         cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Test');
         cy.get('#option-7e169ddf5ea640713c117c81e784b4d0-4 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
         cy.get('.modal-body > .text-blue > :nth-child(2) > #end-btn').click();
+    })
+
+    it('Sección ¿Utilizas actualmente un Software? - Form NO', () => {
+        cy.get('a.btn-form[data-form="form_cat_header_no"]').eq(0).click();
+        cy.get('.flex-col > :nth-child(2) > .fw-500 > .mb-0').click();
+        cy.get('.flex-col > :nth-child(4) > .fw-500 > .mb-0').click();
+        cy.get('.flex-col > :nth-child(5) > .fw-500 > .mb-0').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-2 > .flex > :nth-child(2)').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-3 > .flex > :nth-child(3) > i').click();
+        cy.get('.modal-body > .text-blue > :nth-child(2) > #next-btn').click();
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-4 > :nth-child(1) > .spacing-inputs > .relative > #firstname').type('Nombre Prueba');
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-4 > :nth-child(2) > .spacing-inputs > div.flex > :nth-child(2) > .w-full > .relative > #phone').type('3416568565');
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-4 > :nth-child(3) > .spacing-inputs > .relative > #company').type('Empresa Test');
+        cy.get('#option-2dbacceb03c6cf42989bf004ec7ff3e4-4 > :nth-child(4) > .spacing-inputs > .relative > #email').type('prueba@gmail.com');
+        cy.get('#end-btn').click();
     })
 
 
@@ -402,7 +419,7 @@ context('Categoria Plantilla Arya', () => {
     })
 
 
-    it('Categorias Relacionadas' ,() =>{
+    it('Categorias Relacionadas', () => {
         cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .text-global-gris-5 > .self-center').click();
         cy.get('.pb-12 > .text-4xl').should('contain', 'Software de Compras');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
@@ -410,7 +427,7 @@ context('Categoria Plantilla Arya', () => {
         cy.get(':nth-child(4) > .flex-col > :nth-child(2) > .text-global-gris-5 > .self-center').click();
         cy.contains('h1', 'Software ERP para Constructoras en México').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
-        
+
 
         cy.get(':nth-child(4) > .flex-col > :nth-child(3) > .text-global-gris-5 > .self-center').click();
         cy.contains('h1', 'Software de Producción y Fabricación en México').should('exist');
@@ -459,7 +476,7 @@ context('Categoria Plantilla Arya', () => {
         cy.get(':nth-child(4) > .gral-link-eventos').click();
         cy.contains('Que tu reseña traspase la pantalla.').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
-        
+
         cy.get('.tagm-gral-link-servicios').click()
         cy.contains('Presencia en listados').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
@@ -473,7 +490,7 @@ context('Categoria Plantilla Arya', () => {
         const stub = cy.stub()
         Cypress.on('uncaught:exception', (err, runnable) => {
             if (err.message.includes('ResizeObserver')) {
-                stub() 
+                stub()
                 return false
             }
         })
