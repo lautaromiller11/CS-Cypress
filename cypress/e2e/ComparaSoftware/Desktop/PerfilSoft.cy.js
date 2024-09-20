@@ -314,6 +314,53 @@ context('Perfil de Sotfware', () => {
         cy.visit('https://www.dev.comparasoftware.com/bind');
     })
 
+    it('Breadcums', () =>{
+        cy.get('#Breadcrum > span').click();
+        cy.get('.pb-12 > .text-4xl').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+        cy.get(':nth-child(2) > .leading-4 > span').click();
+        cy.contains('¿Qué categoría de software estás buscando?').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+        cy.get(':nth-child(1) > .leading-4 > span').click();
+        cy.get('.pt-32 > .search-bar > .border').should('exist');
+        cy.visit('https://www.dev.comparasoftware.com/bind');
+    })
+
+    //Boton escribir reseña
+    // it.only('Botón Escribir Reseña', () => {
+    //     cy.get('#btn-resenas').contains('Escribir Reseña').click();
+    //     cy.wait(2000);
+    //     cy.get('#name').type('Nombre Reseña Test');
+    //     cy.get('#email').type('correoreseñaprueba@gmail.com');
+    //     cy.get('#bussines').type('Empresa prueba');
+    //     cy.get(':nth-child(6) > #custom-select > .select-selected').click();
+    //     cy.get(':nth-child(6) > #custom-select > .select-items > :nth-child(3)').click();
+    //     cy.get(':nth-child(7) > #custom-select > .select-selected').click();
+    //     cy.get(':nth-child(7) > #custom-select > .select-items > :nth-child(3)').click();
+    //     cy.get('#next-btn').click();
+    //     cy.get('#range-data-0').invoke('val', 9).trigger('input');
+    //     cy.get('#range-data-1').invoke('val', 7).trigger('input');
+    //     cy.get('#range-data-2').invoke('val', 5).trigger('input');
+    //     cy.get('#range-data-3').invoke('val', 3).trigger('input');
+    //     cy.get('#btn-reco-9').click();
+    //     cy.get('#next-btn').click();
+    //     cy.get('#pros').type('Pros Prueba Reseña: ¿Qué es lo que más te gusta de Bind?');
+    //     cy.get('#contra').type('Contra: ¿Qué características mejorarías del software?');
+    //     cy.get('#user-ex').type('Describe tu experiencia Describe tu experiencia');
+    //     cy.get('#form-3 > :nth-child(5) > input').click();
+    //     cy.wait(1000);
+    //     cy.get('#switch_product_from').type('Nombre Soft Prueba');
+    //     cy.get('#switch_reason').type('¿Por qué realizaste el cambio? ¿Por qué realizaste el cambio?');
+    //     cy.get(':nth-child(8) > #custom-select > .select-selected').click();
+    //     cy.get(':nth-child(8) > #custom-select > .select-items > :nth-child(2)').click();
+    //     cy.get(':nth-child(9) > #custom-select > .select-selected').click();
+    //     cy.get(':nth-child(9) > #custom-select > .select-items > :nth-child(3)').click();
+    //     cy.get(':nth-child(12) > div > .radio-rol').click();
+    //     cy.get('#submit-btn').click();
+    //     cy.get('h1').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/bind');
+    // })
+
     /// Seccion Buscador 
     it('Campo Buscar - Navbar', () => {
         cy.get('.justify-self-start > .search-bar').type('Raptor Web Experience');
@@ -432,7 +479,7 @@ context('Perfil de Sotfware', () => {
     })
 
     //Sección precios
-    it('Sección precios', () => {
+    it.only('Sección precios', () => {
         //Primer Form
         cy.get('#0').click();
         cy.get('#firstname').type('Nombre Prueba');

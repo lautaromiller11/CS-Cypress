@@ -413,7 +413,7 @@ context('Categoria Plantilla Arya 2', () => {
     it('Card de Software en el listado', () => {
         //cy.get(':nth-child(1) > .self-stretch.items-start > .items-start.gap-3 > :nth-child(1) > .w-20 > .flex > .max-w-full').invoke('removeAttr', 'target').click();
         //Boton cotizar
-        cy.get('#soft-item-7357 > :nth-child(3) > .grid-cols-2 > .col-span-2 > .btn').click();
+        cy.get('#soft-item-7357 > :nth-child(4) > .grid-cols-2 > .col-span-2 > .btn').click();
         cy.get('.spacing-inputs > .relative > #firstname').type('Nombre Prueba');
         cy.get('#country_code > .select-form').click();
         cy.get('#country_code > .find_country > .select-options-country > [data-value="+54"]').click();
