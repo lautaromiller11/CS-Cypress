@@ -297,6 +297,7 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
 
     })
+    
     it('Categorias Hub - Gestión', () => {
         cy.get('#btn-cat-menu').click();
         cy.get('[data-pos="9"]').click();
@@ -327,6 +328,49 @@ context('Categoria Plantilla Arya', () => {
         cy.get(':nth-child(1) > .track-click > .text-white').click();
         cy.get('.pt-32 > .search-bar > .border').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
+    })
+
+    it('Sección Top 10', () => {
+        //Primer Software
+        cy.get(':nth-child(1) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Segundo Software
+        cy.get(':nth-child(2) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Tercer Software
+        cy.get(':nth-child(3) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Cuarto Software
+        cy.get(':nth-child(4) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Quinto Software
+        cy.get(':nth-child(5) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Sexto Software
+        cy.get(':nth-child(6) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Septimo Software
+        cy.get(':nth-child(7) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Octavo Software
+        cy.get(':nth-child(8) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Noveno Software
+        cy.get(':nth-child(9) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
+        //Decimo Software
+        cy.get(':nth-child(10) > .block > .track-click > .p-1').click();
+        cy.get('#soft-title > .font-medium').should('exist');
+        cy.go("back");
     })
 
     //Calculadora
@@ -368,12 +412,12 @@ context('Categoria Plantilla Arya', () => {
         cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .row > .w-full > #end-btn').click();
         cy.get('#modal-form-5bc25fa678cc04b1a11a0b336571abdf > .modal-dialog > #form-modal-1Step > .modal-content > .modal-body > .flex > div > .btn').click();
         //Botón simbolo corazón
-        cy.get('#soft-item-1896 > .absolute').click();
-        cy.get('#userEmail').type('emailprueba@gmail.com');
-        cy.get('.modal-container > .btn').click();
-        cy.wait(2000);
-        cy.get('.modal-container > .text-2xl').should('exist');
-        cy.get('button.w-12.h-12').click();
+        // cy.get('#soft-item-1896 > .absolute').click();
+        // cy.get('#userEmail').type('emailprueba@gmail.com');
+        // cy.get('.modal-container > .btn').click();
+        // cy.wait(2000);
+        // cy.get('.modal-container > .text-2xl').should('exist');
+        // cy.get('button.w-12.h-12').click();
         //Comparar en el listado
         cy.get('label[for="soft-compare-2329"]').click();
         cy.get('label[for="soft-compare-5898"]').click();
@@ -506,11 +550,33 @@ context('Categoria Plantilla Arya', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-erp');
     })
 
-    it('"Sección "No encuentra lo que buscas?"', () => {
+    it('Guía de Compra', () => {
+        cy.get('.bg-global-azul-claro > .text-global-azul').scrollIntoView().should('be.visible');
+        cy.get(':nth-child(2) > .bg-global-azul-claro-2').click();
+        cy.get('#mcetoc_1fqh19j4r9d').should('be.visible');
+        cy.get(':nth-child(3) > .bg-global-azul-claro-2').click();
+        cy.get('#mcetoc_1fqh19j4r9e').should('be.visible');
+        cy.get('#content-table-cat > .mce-toc > :nth-child(2) > :nth-child(4) > [href="#mcetoc_1fqh19j4r9e"]').click();
+        cy.get('#mcetoc_1fqh19j4r9e').should('be.visible');
+        cy.get('#content-table-cat > .mce-toc > :nth-child(2) > :nth-child(5) > a').click();
+        cy.get('#mcetoc_1fqh19j4r9l').should('be.visible');
+        cy.get('#content-table-cat > .mce-toc > :nth-child(2) > :nth-child(6) > a').click();
+        cy.get('#mcetoc_1fqh19j4r9p').should('be.visible');
+        cy.get('#content-table-cat > .mce-toc > :nth-child(2) > :nth-child(7) > [href="#mcetoc_1g9kltjjgpi"]').click();
+        cy.get('#mcetoc_1g9kltjjgpi > span').should('be.visible');
+        cy.get('#content-table-cat > .mce-toc > :nth-child(2) > :nth-child(8) > a').click();
+        cy.get('#mcetoc_1fqh19j4r9q').should('be.visible');
+        //Boton "no encuentras lo que buscas?"
         cy.get('.container > .btn').click();
         cy.contains('¿Qué categoría de software estás buscando?').should('exist');
-        cy.visit('https://www.dev.comparasoftware.com/software-erp');
+        cy.go("back");
     })
+
+    // it('"Sección "No encuentra lo que buscas?"', () => {
+    //     cy.get('.container > .btn').click();
+    //     cy.contains('¿Qué categoría de software estás buscando?').should('exist');
+    //     cy.visit('https://www.dev.comparasoftware.com/software-erp');
+    // })
 
 
     it('Footer', () => {

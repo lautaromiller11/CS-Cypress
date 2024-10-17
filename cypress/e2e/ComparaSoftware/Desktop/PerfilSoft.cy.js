@@ -314,7 +314,7 @@ context('Perfil de Sotfware', () => {
         cy.visit('https://www.dev.comparasoftware.com/bind');
     })
 
-    it('Breadcums', () =>{
+    it('Breadcums', () => {
         cy.get('#Breadcrum > span').click();
         cy.get('.pb-12 > .text-4xl').should('exist');
         cy.visit('https://www.dev.comparasoftware.com/bind');
@@ -328,37 +328,40 @@ context('Perfil de Sotfware', () => {
 
     //Boton escribir reseña
     // it.only('Botón Escribir Reseña', () => {
-    //     cy.get('#btn-resenas').contains('Escribir Reseña').click();
-    //     cy.wait(2000);
-    //     cy.get('#name').type('Nombre Reseña Test');
-    //     cy.get('#email').type('correoreseñaprueba@gmail.com');
-    //     cy.get('#bussines').type('Empresa prueba');
-    //     cy.get(':nth-child(6) > #custom-select > .select-selected').click();
-    //     cy.get(':nth-child(6) > #custom-select > .select-items > :nth-child(3)').click();
-    //     cy.get(':nth-child(7) > #custom-select > .select-selected').click();
-    //     cy.get(':nth-child(7) > #custom-select > .select-items > :nth-child(3)').click();
-    //     cy.get('#next-btn').click();
-    //     cy.get('#range-data-0').invoke('val', 9).trigger('input');
-    //     cy.get('#range-data-1').invoke('val', 7).trigger('input');
-    //     cy.get('#range-data-2').invoke('val', 5).trigger('input');
-    //     cy.get('#range-data-3').invoke('val', 3).trigger('input');
-    //     cy.get('#btn-reco-9').click();
-    //     cy.get('#next-btn').click();
-    //     cy.get('#pros').type('Pros Prueba Reseña: ¿Qué es lo que más te gusta de Bind?');
-    //     cy.get('#contra').type('Contra: ¿Qué características mejorarías del software?');
-    //     cy.get('#user-ex').type('Describe tu experiencia Describe tu experiencia');
-    //     cy.get('#form-3 > :nth-child(5) > input').click();
-    //     cy.wait(1000);
-    //     cy.get('#switch_product_from').type('Nombre Soft Prueba');
-    //     cy.get('#switch_reason').type('¿Por qué realizaste el cambio? ¿Por qué realizaste el cambio?');
-    //     cy.get(':nth-child(8) > #custom-select > .select-selected').click();
-    //     cy.get(':nth-child(8) > #custom-select > .select-items > :nth-child(2)').click();
-    //     cy.get(':nth-child(9) > #custom-select > .select-selected').click();
-    //     cy.get(':nth-child(9) > #custom-select > .select-items > :nth-child(3)').click();
-    //     cy.get(':nth-child(12) > div > .radio-rol').click();
-    //     cy.get('#submit-btn').click();
-    //     cy.get('h1').should('exist');
-    //     cy.visit('https://www.dev.comparasoftware.com/bind');
+    //     cy.get('#btn-resenas').invoke('attr', 'data-href').then((href) => {
+    //         cy.visit(href);
+    //         cy.wait(2000);
+    //         cy.get('#name').type('Nombre Reseña Test');
+    //         cy.get('#email').type('correoreseñaprueba@gmail.com');
+    //         cy.get('#bussines').type('Empresa prueba');
+    //         cy.get(':nth-child(6) > #custom-select > .select-selected').click();
+    //         cy.get(':nth-child(6) > #custom-select > .select-items > :nth-child(3)').click();
+    //         cy.get(':nth-child(7) > #custom-select > .select-selected').click();
+    //         cy.get(':nth-child(7) > #custom-select > .select-items > :nth-child(3)').click();
+    //         cy.get('#next-btn').click();
+    //         cy.get('#range-data-0').invoke('val', 9).trigger('input');
+    //         cy.get('#range-data-1').invoke('val', 7).trigger('input');
+    //         cy.get('#range-data-2').invoke('val', 5).trigger('input');
+    //         cy.get('#range-data-3').invoke('val', 3).trigger('input');
+    //         cy.get('#btn-reco-9').click();
+    //         cy.get('#next-btn').click();
+    //         cy.get('#pros').type('Pros Prueba Reseña: ¿Qué es lo que más te gusta de Bind?');
+    //         cy.get('#contra').type('Contra: ¿Qué características mejorarías del software?');
+    //         cy.get('#user-ex').type('Describe tu experiencia Describe tu experiencia');
+    //         cy.get('#form-3 > :nth-child(5) > input').click();
+    //         cy.wait(1000);
+    //         cy.get('#switch_product_from').type('Nombre Soft Prueba');
+    //         cy.get('#switch_reason').type('¿Por qué realizaste el cambio? ¿Por qué realizaste el cambio?');
+    //         cy.get(':nth-child(8) > #custom-select > .select-selected').click();
+    //         cy.get(':nth-child(8) > #custom-select > .select-items > :nth-child(2)').click();
+    //         cy.get(':nth-child(9) > #custom-select > .select-selected').click();
+    //         cy.get(':nth-child(9) > #custom-select > .select-items > :nth-child(3)').click();
+    //         cy.get(':nth-child(12) > div > .radio-rol').click();
+    //         cy.get('#submit-btn').click();
+    //         cy.get('h1').should('exist');
+    //         cy.visit('https://www.dev.comparasoftware.com/bind');
+    //     });
+
     // })
 
     /// Seccion Buscador 
@@ -465,6 +468,20 @@ context('Perfil de Sotfware', () => {
 
     })
 
+    it('Galeria Media', () =>{
+        cy.get('[data-slite_to="3"] > .h-auto').click();  
+        cy.get('.carousel-item-3').should('be.visible');
+        cy.get('#btn-prev > img').click();
+        cy.get('#btn-prev > img').click();
+        cy.get('.carousel-item-2').should('be.visible');
+        cy.get('#btn-prev > img').click();
+        cy.get('#btn-prev > img').click();
+        cy.get('#ytplayer').should('be.visible');
+        cy.get("#closeDialog > .svgicon > use").click();
+        cy.get('.py-4 > .flex').should('be.visible');
+
+    })
+
     //Banner agendar llamada
     it('Banner Agendar Llamada', () => {
         cy.get('.py-4 > .flex').click()
@@ -479,7 +496,7 @@ context('Perfil de Sotfware', () => {
     })
 
     //Sección precios
-    it.only('Sección precios', () => {
+    it('Sección precios', () => {
         //Primer Form
         cy.get('#0').click();
         cy.get('#firstname').type('Nombre Prueba');
@@ -512,8 +529,30 @@ context('Perfil de Sotfware', () => {
         cy.get('.modal-body > .flex > div > .btn').click();
     })
 
+
+    it('Sección Preguntas', () => {
+        //Primer pregunta
+        cy.get('#headingfaq0 > .no-underline').click();
+        cy.get('#faq-0 > div').should('exist');
+        //Segunda pregunta
+        cy.get('#headingfaq1 > .no-underline').click();
+        cy.get('#faq-1 > div').should('exist');
+        //Tercer pregunta
+        cy.get('#headingfaq2 > .no-underline').click();
+        cy.get('#faq-2 > div').should('exist');
+        //Cuarta pregunta
+        cy.get('#headingfaq3 > .no-underline').click();
+        cy.get('#faq-3 > div').should('exist');
+        //Quinta pregunta
+        cy.get('#headingfaq4 > .no-underline').click();
+        cy.get('#faq-4 > div').should('exist');
+        //Campo dudas
+        // cy.get('#faq-user').type('Consulta de prueba');
+        // cy.get('#sendBtn').click();
+    })
+
     //Banner escribir una resñea
-        it('Banner Reseña', () => {
+    it('Banner Reseña', () => {
         cy.get('.pt-4 > .btn').click();
         cy.wait(2000);
         cy.get('#name').type('Nombre Reseña Test');

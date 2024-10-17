@@ -434,6 +434,7 @@ context('Categoria Plantilla Arya 2', () => {
         cy.visit('https://www.dev.comparasoftware.com/software-crm');
     })
 
+
         //Dejar comentado hasta encontrar solucion
     
     // it('Top Software $Software - Carrousel',() =>{

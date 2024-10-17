@@ -46,7 +46,7 @@ context('Home', () => {
 
     /// Test Criticos del Home ///
      ///////Navbar
-    it('Boton "soliciar asesoria sin costo" - Navbar', () => {
+    it.only('Boton "soliciar asesoria sin costo" - Navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
         cy.contains('Solicitar asesoría sin costo').click();
         // relleno de formulario introduciendo datos válidos

@@ -36,6 +36,7 @@ context('Home', () => {
         cy.contains('Seguir en México').click();
         cy.wait(2000);
     })
+
      ///////Navbar
     it('Boton "soliciar asesoria sin costo" - Navbar', () => {
         // hacer click en el boton "solicitar asesoria sin costo"
